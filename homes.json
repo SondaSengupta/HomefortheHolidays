@@ -1,0 +1,6 @@
+{
+  "a" : { "id": "1","latitude": "37", "longitude": "-83", "message": "Location1" },
+  "b" : { "id": "2", "latitude": "38", "longitude": "-84", "message": "Location2" },
+  "c" : { "id": "3", "latitude": "39", "longitude": "-85", "message": "Location3" },
+  "d" : { "id": "4", "latitude": "40", "longitude": "-86", "message": "Location4" }
+}

@@ -4,8 +4,11 @@
   angular.module("myApp", [ "uiGmapgoogle-maps" ] )
     .controller("MapController", function($http, $scope) {
       var vm = this;
-      $http.get("https://holidayhome.firebaseio.com/HomeMarker/.json")
+      $http.get("https://holidayhome.firebaseio.com/.json")
       .success(function(data) {
+        // for (var key in data) {
+        //   data[key].latLong = data[key].latitude + ',' + data[key].longitude;
+        // }
         vm.HomeMarker = data;
         console.log("it works!");
       })
@@ -29,12 +32,9 @@
         }
       }
 
-      $scope.markerList = [
-        { id: 1, latitude: 37, longitude: -83, message: "Location1" },
-        { id: 2, latitude: 38, longitude: -84, message: "Location2" },
-        { id: 3, latitude: 39, longitude: -85, message: "Location3" },
-        { id: 4, latitude: 40, longitude: -86, message: "Location4" }
-      ]
+
+      $scope.markerList = vm.HomeMarker;
+
 
     });
 }());
