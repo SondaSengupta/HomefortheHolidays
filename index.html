@@ -21,7 +21,7 @@
         </ui-gmap-window>
       </ui-gmap-marker>
 
-      <ui-gmap-marker ng-repeat="(markerId, list) in mc.HomeMarker"
+      <ui-gmap-marker ng-repeat="(markerId, list) in mc.Marker"
               coords="list" idkey="markerId">
         <ui-gmap-window isIconVisibleOnClick="true">
           <p>Message:{{list.message}}</p>
@@ -30,21 +30,41 @@
 
     </ui-gmap-google-map>
 
+    <form name="markerForm" ng-submit="markerForm.$valid && mc.addNewMarker()" novalidate>
+      <div>
+        <label for="Latitude">Latitude</label>
+        <input class="latitude" id="latitude" type="text" ng-model = "mc.newMarker.latitude" required>
+      </div>
+      <div>
+        <label for="Longitude">Longitude</label>
+        <input class="longitude" id="longitude" type="text" ng-model = "mc.newMarker.longitude" required>
+      </div>
+      <div>
+        <label for="Message">Message</label>
+        <input class="message" id="message" type="text" ng-model = "mc.newMarker.message" >
+      </div>
+      <input type="submit" class="btn btn-success" value="Add Marker" ng-show="markerForm.$valid"/>
+    </form>
+
+
     <table>
       <tr>
         <th>marker ID</th>
         <th>Latitude</th>
         <th>Longitude</th>
         <th>Message</th>
-
+        <th> Delete </th>
       </tr>
-      <tr ng-repeat="(markerId, list) in mc.HomeMarker">
+      <tr ng-repeat="(markerId, list) in mc.Marker">
         <td>{{markerId}}</td>
         <td>{{list.latitude}}</td>
         <td>{{list.longitude}}</td>
         <td>{{list.message}}</td>
+        <td><button class="btn btn-danger" ng-click="mc.deleteMarker(markerId)">Delete</button></td>
       </tr>
     </table>
+
+
   </div>
   <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>

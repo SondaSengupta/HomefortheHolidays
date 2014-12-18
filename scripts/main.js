@@ -6,10 +6,7 @@
       var vm = this;
       $http.get("https://holidayhome.firebaseio.com/.json")
       .success(function(data) {
-        // for (var key in data) {
-        //   data[key].latLong = data[key].latitude + ',' + data[key].longitude;
-        // }
-        vm.HomeMarker = data;
+        vm.Marker = data;
         console.log("it works!");
       })
       .error(function(err) {
@@ -32,9 +29,32 @@
         }
       }
 
+      $scope.markerList = vm.Marker;
 
-      $scope.markerList = vm.HomeMarker;
+    vm.addNewMarker = function(){
+    var url = "https://holidayhome.firebaseio.com/.json";
+    $http.post(url, vm.newMarker)
+      .success(function(data){
+        vm.Marker[data.name] = vm.newMarker;
+        vm.newMarker = null;
+        console.log("it works!");
+      })
+      .error(function(err){
+        console.log(err);
+      })
+    }
 
+     vm.deleteMarker = function(markerId){
+      var url = "https://holidayhome.firebaseio.com/" + markerId + ".json";
+      $http.delete(url)
+      .success(function(){
+        delete vm.Marker[markerId]
+        console.log("it works!");
+      })
+      .error(function(err){
+        console.log(err);
+      })
+    }
 
     });
 }());
