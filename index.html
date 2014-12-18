@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-US" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="stylesheets/main.css">
+  <title>Home for the Holidays</title>
+</head>
+<body>
+
+  <div class="container" ng-controller="MapController as mc">
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Coordinate</th>
+
+      </tr>
+      <tr ng-repeat="(markerId, list) in mc.HomeMarker">
+        <td>{{list.title}}</td>
+        <td>{{list.coordinates}}</td>
+      </tr>
+    </table>
+
+  </div>
+  <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+  <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+  <script src="bower_components/lodash/dist/lodash.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
