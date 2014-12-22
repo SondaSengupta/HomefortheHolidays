@@ -32,6 +32,8 @@
 
     <form name="markerForm" ng-submit="markerForm.$valid && mc.addNewMarker()" novalidate>
       <div>
+        <p>You are at location: ({{lat}},{{lng}})</p>
+      <div>
         <label for="Latitude">Latitude</label>
         <input class="latitude" id="latitude" type="text" ng-model = "mc.newMarker.latitude" required>
       </div>
