@@ -13,12 +13,26 @@
         console.log(err);
       })
 
+    function runGeolocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(location) {
+          var lat = location.coords.latitude,
+              lng = location.coords.longitude;
+              console.log(lat + "," + lng);
+        });
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+
+
       $scope.map = {
         center: { latitude: 36, longitude: -87 },
         zoom: 5
       }
 
       $scope.marker = {
+        geolocation: runGeolocation(),
         id: 0,
         message: "Current Location",
         options: { animation: google.maps.Animation.DROP },
