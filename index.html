@@ -41,9 +41,9 @@
       </div>
       <div>
         <label for="Message">Message</label>
-        <input class="message" id="message" type="text" ng-model = "mc.newMarker.message" >
+        <input class="message" id="message" type="text" ng-model = "mc.newMarker.message" required>
       </div>
-      <input type="submit" class="btn btn-success" value="Add Marker" ng-show="markerForm.$valid"/>
+      <input type="submit" class="btn btn-success" value="Add Marker" ng-class="{disabled: markerForm.$invalid}" />
     </form>
 
 
