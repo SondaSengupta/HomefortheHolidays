@@ -30,6 +30,11 @@
 
     </ui-gmap-google-map>
 
+    <div id="panel">
+      <input id="address" type="textbox" value="Sydney, NSW">
+      <input type="submit" value="Geocode" ng-click="mc.getAddress()">
+    </div>
+
     <form name="markerForm" ng-submit="markerForm.$valid && mc.addNewMarker()" novalidate>
       <div>
         <p>You are at location: ({{lat}},{{lng}})</p>
