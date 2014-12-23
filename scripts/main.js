@@ -33,13 +33,26 @@
       });
     }
 
-    navigator.geolocation.getCurrentPosition(function(location) {
-      $scope.lat = location.coords.latitude,
-      $scope.lng = location.coords.longitude;
-      $scope.$apply();
-    });
+    vm.getLocation = function() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(location) {
+          $scope.lat = location.coords.latitude,
+          $scope.lng = location.coords.longitude;
+          $scope.$apply();
 
-    console.log($scope.lat);
+          $("input#latitude").val($scope.lat).trigger("input");
+          $("input#longitude").val($scope.lng).trigger("input");
+        });
+      } else {
+        alert("Geolocation is not supported. Please type address or coordinates manually");
+      }
+    }
+
+    vm.clearForm = function(){
+      $("input#latitude").val('').trigger("input");
+      $("input#longitude").val('').trigger("input");
+      $("input#message").val('').trigger("input");
+    }
 
     $scope.map = {
       center: { latitude: 36, longitude: -87 },
