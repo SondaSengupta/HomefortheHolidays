@@ -24,7 +24,7 @@
       <ui-gmap-marker ng-repeat="(markerId, list) in mc.Marker"
               coords="list" idkey="markerId">
         <ui-gmap-window isIconVisibleOnClick="true">
-          <p>Message:{{list.message}}</p>
+          <p>{{list.message}}</p>
         </ui-gmap-window>
       </ui-gmap-marker>
 
@@ -32,7 +32,7 @@
 
     <div id="panel">
       <input id="address" type="textbox" value="Nashville, TN">
-      <input type="submit" value="Geocode" ng-click="mc.getAddress()">
+      <input type="submit" class="btn btn-success" value="Get Coordinates" ng-click="mc.getAddress()">
     </div>
 
     <form name="markerForm" ng-submit="markerForm.$valid && mc.addNewMarker()" novalidate>

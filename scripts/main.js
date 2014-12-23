@@ -23,17 +23,9 @@
           var addressCoordsLng = results[0].geometry.location.D;
           console.log("Lat is " + addressCoordsLat + " and Long is " + addressCoordsLng);
 
-          vm.Marker.latitude = addressCoordsLat;
-          vm.Marker.longitude = addressCoordsLng;
-
-          var url = "https://holidayhome.firebaseio.com/.json";
-          $http.post(url, vm.Marker)
-            .success(function(data) {
-              console.log("it works!");
-            })
-            .error(function(err) {
-              console.log(err);
-            })
+          $("input#latitude").val(addressCoordsLat).trigger("input");
+          $("input#longitude").val(addressCoordsLng).trigger("input");
+          $("input#address").val('');
 
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
