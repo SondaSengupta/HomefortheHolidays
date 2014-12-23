@@ -18,14 +18,27 @@
     vm.getAddress = function(){
       var address = document.getElementById('address').value;
       geocoder.geocode( { 'address': address}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      var addressCoords = results[0].geometry.location;
-      console.log(addressCoords);
+        if (status == google.maps.GeocoderStatus.OK) {
+          var addressCoordsLat = results[0].geometry.location.k;
+          var addressCoordsLng = results[0].geometry.location.D;
+          console.log("Lat is " + addressCoordsLat + " and Long is " + addressCoordsLng);
 
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
+          vm.Marker.latitude = addressCoordsLat;
+          vm.Marker.longitude = addressCoordsLng;
+
+          var url = "https://holidayhome.firebaseio.com/.json";
+          $http.post(url, vm.Marker)
+            .success(function(data) {
+              console.log("it works!");
+            })
+            .error(function(err) {
+              console.log(err);
+            })
+
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
     }
 
     navigator.geolocation.getCurrentPosition(function(location) {
