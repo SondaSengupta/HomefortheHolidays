@@ -3,20 +3,6 @@
 
   angular.module("myApp", [ "ngRoute","uiGmapgoogle-maps" ] )
 
-
-    .config(function($routeProvider){
-      $routeProvider
-      .when('/', {
-        templateUrl: "views/allmarkers.html",
-        controller: "MapController",
-        controllerAs: "mc"
-      })
-      .when('/new', {
-        templateUrl: "views/markerform.html",
-        controller: "MapController",
-        controllerAs: "mc"
-      })
-    })
     .controller("MapController", function($http, $scope) {
       var vm = this;
       $http.get("https://holidayhome.firebaseio.com/.json")
@@ -28,11 +14,9 @@
         console.log(err);
       })
 
-
-
-
     var geocoder = new google.maps.Geocoder();
-    vm.getAddress = function(){
+
+    vm.getAddress = function() {
       var address = document.getElementById('address').value;
       geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
@@ -42,7 +26,7 @@
 
           $("input#latitude").val(addressCoordsLat).trigger("input");
           $("input#longitude").val(addressCoordsLng).trigger("input");
-          $("input#address").val('');
+          $("input#address").val("");
           $("input#addressform").val(address).trigger("input");
 
         } else {
@@ -66,10 +50,10 @@
       }
     }
 
-    vm.clearForm = function(){
-      $("input#latitude").val('').trigger("input");
-      $("input#longitude").val('').trigger("input");
-      $("input#message").val('').trigger("input");
+    vm.clearForm = function() {
+      $("input#latitude").val("").trigger("input");
+      $("input#longitude").val("").trigger("input");
+      $("input#message").val("").trigger("input");
     }
 
     $scope.map = {
@@ -78,22 +62,22 @@
       zoom: 5
     }
 
-      $scope.marker = {
-        id: 0,
-        message: "Current Location",
-        options: { animation: google.maps.Animation.DROP },
-        icon: 'https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-08-24.png',
-        coords: {
-          latitude: 36,
-          longitude: -87
-        }
+    $scope.marker = {
+      id: 0,
+      message: "Current Location",
+      options: { animation: google.maps.Animation.DROP },
+      icon: 'https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-08-24.png',
+      coords: {
+        latitude: 36,
+        longitude: -87
       }
+    }
+
 
     $scope.markerList = vm.Marker;
 
-    vm.refreshMap = function () {
-    //optional param if you want to refresh you can pass null undefined or false or empty arg
-      $scope.map.control.refresh({latitude: 36, longitude: -87});
+    vm.refreshMap = function() {
+      $scope.map.control.refresh({ latitude: 36, longitude: -87 });
       $scope.map.control.getGMap().setZoom(5);
       return;
     };
@@ -123,5 +107,6 @@
       })
     }
 
-    });
-}());
+  }); //end of controller
+
+}()); //end of of iife

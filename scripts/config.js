@@ -2,7 +2,7 @@
   "use strict";
 
   angular.module("myApp")
-    .config(function($routeProvider){
+    .config(function($routeProvider) {
       $routeProvider
       .when('/', {
         templateUrl: "views/landing_page.html",
