@@ -1,7 +1,22 @@
 ;(function() {
   "use strict";
 
-  angular.module("myApp", [ "uiGmapgoogle-maps" ] )
+  angular.module("myApp", [ "ngRoute","uiGmapgoogle-maps" ] )
+
+
+    .config(function($routeProvider){
+      $routeProvider
+      .when('/', {
+        templateUrl: "views/allmarkers.html",
+        controller: "MapController",
+        controllerAs: "mc"
+      })
+      .when('/new', {
+        templateUrl: "views/markerform.html",
+        controller: "MapController",
+        controllerAs: "mc"
+      })
+    })
     .controller("MapController", function($http, $scope) {
       var vm = this;
       $http.get("https://holidayhome.firebaseio.com/.json")
@@ -13,8 +28,10 @@
         console.log(err);
       })
 
-    var geocoder = new google.maps.Geocoder();
 
+
+
+    var geocoder = new google.maps.Geocoder();
     vm.getAddress = function(){
       var address = document.getElementById('address').value;
       geocoder.geocode( { 'address': address}, function(results, status) {
@@ -26,6 +43,7 @@
           $("input#latitude").val(addressCoordsLat).trigger("input");
           $("input#longitude").val(addressCoordsLng).trigger("input");
           $("input#address").val('');
+          $("input#addressform").val(address).trigger("input");
 
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
@@ -55,6 +73,7 @@
     }
 
     $scope.map = {
+      control: {},
       center: { latitude: 36, longitude: -87 },
       zoom: 5
     }
@@ -70,7 +89,14 @@
         }
       }
 
-      $scope.markerList = vm.Marker;
+    $scope.markerList = vm.Marker;
+
+    vm.refreshMap = function () {
+    //optional param if you want to refresh you can pass null undefined or false or empty arg
+      $scope.map.control.refresh({latitude: 36, longitude: -87});
+      $scope.map.control.getGMap().setZoom(5);
+      return;
+    };
 
     vm.addNewMarker = function() {
     var url = "https://holidayhome.firebaseio.com/.json";
