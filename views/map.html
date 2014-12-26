@@ -1,5 +1,6 @@
 
   <div class="container" ng-controller="MapController as mc">
+
     <button class="btn btn-success" ng-click="mc.refreshMap()">Recenter this Map</button>
 
     <ui-gmap-google-map id="mapCanvas" center="map.center" zoom="map.zoom" control="map.control">
@@ -10,7 +11,7 @@
       </ui-gmap-marker>
 
       <ui-gmap-marker ng-repeat="(markerId, list) in mc.Marker"
-              coords="list" idkey="markerId" icon="marker.icon" options="marker.options">
+              coords="list" idkey="markerId" icon="marker.icon2" options="marker.options">
         <ui-gmap-window isIconVisibleOnClick="true">
           <p>{{list.message}} from {{list.address}}</p>
         </ui-gmap-window>

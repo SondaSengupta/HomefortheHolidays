@@ -9,11 +9,16 @@
         controller: "MapController",
         controllerAs: "mc"
       })
-      .when('/new', {
+      .when('/map', {
         templateUrl: "views/map.html",
         controller: "MapController",
         controllerAs: "mc"
       })
-    })
-
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginController',
+        controllerAs: 'login'
+      })
+     .otherwise({redirectTo: '/'});
+   })
 }());

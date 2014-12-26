@@ -3,6 +3,48 @@
 
   angular.module("myApp", [ "ngRoute","uiGmapgoogle-maps" ] )
 
+    // .constant('FIREBASE_URL', "https://holidayhome.firebaseio.com")
+
+    .controller('LoginController', function($location, $scope){
+      var vm = this;
+
+      vm.login = function(){
+        var ref = new Firebase('https://holidayhome.firebaseio.com')
+
+        ref.authWithPassword({
+          email    : vm.email,
+          password : vm.password
+        }, function(error, authData) {
+          if (error === null) {
+            console.log("User logged in successfully", authData);
+            $location.path('/map');
+            $scope.$apply();
+          } else {
+            console.log("Error logging in this user:", error);
+          }
+        });
+      }
+
+       vm.register = function(){
+        var ref = new Firebase('https://holidayhome.firebaseio.com')
+
+        ref.createUser({
+          email    : vm.email,
+          password : vm.password
+        }, function(error, authData) {
+          if (error === null) {
+            console.log("User created successfully", authData);
+            alert("You have created an account successfully.")
+            $location.path('/map');
+            $scope.$apply();
+          } else {
+            console.log("Error creating user:", error);
+          }
+        });
+      }
+
+    })
+
     .controller("MapController", function($http, $scope) {
       var vm = this;
       $http.get("https://holidayhome.firebaseio.com/.json")
@@ -66,12 +108,14 @@
       id: 0,
       message: "Current Location",
       options: { animation: google.maps.Animation.DROP },
-      icon: 'https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-08-24.png',
+      //icon1: default red google maps icon. As default, no need to specify//
+      icon2: 'https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-08-24.png',
       coords: {
         latitude: 36,
         longitude: -87
       }
     }
+
 
 
     $scope.markerList = vm.Marker;
