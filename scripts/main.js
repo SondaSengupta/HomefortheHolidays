@@ -5,6 +5,30 @@
 
     // .constant('FIREBASE_URL', "https://holidayhome.firebaseio.com")
 
+     .controller('ChangePasswordController', function($scope, $location){
+      var vm = this;
+      var ref = new Firebase('https://holidayhome.firebaseio.com');
+
+      vm.changePassword = function(){
+        ref.changePassword({
+            email       : ref.getAuth().password.email,
+            oldPassword : vm.oldPassword,
+            newPassword : vm.newPassword,
+          }, function(error) {
+            if (error === null) {
+              console.log('Password changed successfully');
+              cb();
+            } else {
+              console.log('Error changing password:', error);
+            }
+          }
+        );
+          $location.path('/map');
+          $scope.$apply();
+        }
+      }
+    )
+
     .controller('LogoutController', function($scope, $location){
       var ref = new Firebase('https://holidayhome.firebaseio.com');
 
@@ -55,7 +79,7 @@
             email : vm.email
           }, function(error) {
           if (error === null) {
-            console.log("Password reset email sent successfully");
+            alert("Password reset email sent successfully");
           } else {
             console.log("Error sending password reset email:", error);
             alert(error.message);
@@ -135,8 +159,6 @@
         longitude: -87
       }
     }
-
-
 
     $scope.markerList = vm.Marker;
 

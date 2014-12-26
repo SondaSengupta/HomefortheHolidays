@@ -19,6 +19,15 @@
         controller: 'LoginController',
         controllerAs: 'login'
       })
+       .when('/logout', {
+        template: '',
+        controller: 'LogoutController'
+      })
+      .when('/changepassword', {
+        templateUrl: 'views/changepassword.html',
+        controller: 'ChangePasswordController',
+        controllerAs: 'changepw'
+      })
      .otherwise({redirectTo: '/'});
    })
 }());
