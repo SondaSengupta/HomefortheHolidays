@@ -1,6 +1,6 @@
 
   <div class="container" ng-controller="MapController as mc">
-
+    <a class="btn btn-danger" href="/#/">Logout</a>
     <button class="btn btn-success" ng-click="mc.refreshMap()">Recenter this Map</button>
 
     <ui-gmap-google-map id="mapCanvas" center="map.center" zoom="map.zoom" control="map.control">

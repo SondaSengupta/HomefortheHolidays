@@ -5,6 +5,15 @@
 
     // .constant('FIREBASE_URL', "https://holidayhome.firebaseio.com")
 
+    .controller('LogoutController', function($scope, $location){
+      var ref = new Firebase('https://holidayhome.firebaseio.com');
+
+      ref.unauth(function(){
+        $location.path('/');
+        $scope.$apply();
+      });
+    })
+
     .controller('LoginController', function($location, $scope){
       var vm = this;
       var ref = new Firebase('https://holidayhome.firebaseio.com');
