@@ -7,10 +7,9 @@
 
     .controller('LoginController', function($location, $scope){
       var vm = this;
+      var ref = new Firebase('https://holidayhome.firebaseio.com');
 
       vm.login = function(){
-        var ref = new Firebase('https://holidayhome.firebaseio.com')
-
         ref.authWithPassword({
           email    : vm.email,
           password : vm.password
@@ -21,13 +20,12 @@
             $scope.$apply();
           } else {
             console.log("Error logging in this user:", error);
+            alert(error.message);
           }
         });
       }
 
        vm.register = function(){
-        var ref = new Firebase('https://holidayhome.firebaseio.com')
-
         ref.createUser({
           email    : vm.email,
           password : vm.password
@@ -35,13 +33,26 @@
           if (error === null) {
             console.log("User created successfully", authData);
             alert("You have created an account successfully.")
-            $location.path('/map');
-            $scope.$apply();
+            vm.login();
           } else {
             console.log("Error creating user:", error);
+              alert(error.message);
           }
         });
       }
+
+       vm.forgotPassword = function(){
+        ref.resetPassword({
+            email : vm.email
+          }, function(error) {
+          if (error === null) {
+            console.log("Password reset email sent successfully");
+          } else {
+            console.log("Error sending password reset email:", error);
+            alert(error.message);
+          }
+        });
+      };
 
     })
 

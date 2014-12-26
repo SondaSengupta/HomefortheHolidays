@@ -9,4 +9,5 @@
   </div>
   <div ng-click="login.register()" class="btn btn-default btn-block" ng-class="{disabled: loginForm.$invalid}">Register</div>
   <input type="submit" class="btn btn-primary btn-block" value="Login" ng-class="{disabled: loginForm.$invalid}">
+    <div class="btn btn-warning btn-block" ng-class="{disabled: !login.email }" ng-click="login.forgotPassword()">Forgot Password</div>
 </form>
