@@ -192,6 +192,26 @@
         console.log(err);
       })
     }
+    
+    // DREAM CODE FOR "ADD YOUR OWN RATING" BUTTON
+    // vm.rating = function(){
+    //   var counter = 0
+    //   var numberofPeople = 1
+    //   var enteredRating = ("input").click().val()
+    //
+    //   counter = (counter + enteredRating)/numberofPeople
+    //   numberofPeople +=1
+    //
+    //   var url = "https://holidayhome.firebaseio.com/" + markerId + ".json";
+    //   $http.put(url)
+    //   .success(function() {
+    //     vm.Marker[markerId].rating = counter;
+    //     console.log("it works!");
+    //   })
+    //   .error(function(err) {
+    //     console.log(err);
+    //   })
+    // }
 
   }); //end of controller
 

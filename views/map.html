@@ -13,7 +13,12 @@
       <ui-gmap-marker ng-repeat="(markerId, list) in mc.Marker"
               coords="list" idkey="markerId" icon="marker.icon2" options="marker.options">
         <ui-gmap-window isIconVisibleOnClick="true">
-          <p>{{list.message}} from {{list.address}}</p>
+          <div class="marker-infobox">
+            <h5>{{list.address}}</h5>
+            <img class="add-img" ng-src="{{list.image}}">
+            <p>{{list.message}} <br><i>{{list.signature}}</i><br>{{list.rating}}</p>
+            <button class="btn btn-warning" ng-click="mc.rating()">Add your Rating</button>
+          </div>
         </ui-gmap-window>
       </ui-gmap-marker>
 
@@ -49,6 +54,24 @@
         <label for="Message">Message</label>
         <input class="message" id="message" type="text" ng-model = "mc.newMarker.message">
       </div>
+      <div>
+        <label for="Image">Copy Image URL</label>
+        <input class="image" id="image" type="url" ng-model = "mc.newMarker.image">
+      </div>
+      <div>
+        <label>Rate It!</label>
+        <select class="rating" ng-model="mc.newMarker.rating">
+          <option>&#9733;</option>
+          <option>&#9733;&#9733;</option>
+          <option>&#9733;&#9733;&#9733;</option>
+          <option>&#9733;&#9733;&#9733;&#9733;</option>
+          <option>&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+        </select>
+      </div>
+      <div>
+        <label for="Signature">Add a Name for Attribution</label>
+        <input class="signature" id="signature" value="anonymous" type="text" ng-model = "mc.newMarker.signature">
+      </div>
       <input type="submit" class="btn btn-success" value="Submit to Add Marker" ng-class="{disabled: markerForm.$invalid}" />
       <input type="submit" class="btn btn-warning" value="Clear Form" ng-click="mc.clearForm()" />
 
@@ -57,19 +80,23 @@
   <table>
     <h3> Marker List </h3>
     <tr>
-      <th>marker ID</th>
+      <th>Image Preview</th>
       <th>Latitude</th>
       <th>Longitude</th>
       <th>Message</th>
       <th>Address</th>
+      <th>Signature</th>
+      <th>Rating</th>
       <th> Delete </th>
     </tr>
     <tr ng-repeat="(markerId, list) in mc.Marker">
-      <td>{{markerId}}</td>
+      <td><img class="add-img" ng-src="{{list.image}}"></td>
       <td>{{list.latitude}}</td>
       <td>{{list.longitude}}</td>
       <td>{{list.message}}</td>
       <td>{{list.address}}</td>
+      <td>{{list.rating}}</td>
+      <td>{{list.signature}}</td>
       <td><button class="btn btn-danger" ng-click="mc.deleteMarker(markerId)">Delete</button></td>
     </tr>
   </table>

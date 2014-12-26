@@ -6,10 +6,23 @@ h1 {
   text-align: center;
 }
 
-p, td, th {
+td, th {
   padding: 20px;
 }
 
 body {
   background-color: lightgreen;
+}
+
+.add-img{
+  height: 100px;
+  width: 100px;
+  border-radius: 10%;
+}
+
+.marker-infobox{
+  padding: 5px;
+  background-color: lightblue;
+  text-align: center;
+  line-height:200%;
 }
