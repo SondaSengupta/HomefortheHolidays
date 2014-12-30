@@ -17,7 +17,7 @@
             <h5>{{list.address}}</h5>
             <img class="add-img" ng-src="{{list.image}}">
             <p>{{list.message}} <br><i>{{list.signature}}</i><br>{{list.rating}}</p>
-            <button class="btn btn-warning" ng-click="mc.rating()">Add your Rating</button>
+      <!--       <button class="btn btn-warning" ng-click="mc.rating()">Add your Rating</button> -->
           </div>
         </ui-gmap-window>
       </ui-gmap-marker>
@@ -85,8 +85,8 @@
       <th>Longitude</th>
       <th>Message</th>
       <th>Address</th>
-      <th>Signature</th>
       <th>Rating</th>
+      <th>Signature</th>
       <th> Delete </th>
     </tr>
     <tr ng-repeat="(markerId, list) in mc.Marker">
@@ -97,6 +97,7 @@
       <td>{{list.address}}</td>
       <td>{{list.rating}}</td>
       <td>{{list.signature}}</td>
+      <td> <a class="btn btn-primary" href="/#/{{markerId}}/edit">Edit</a></td>
       <td><button class="btn btn-danger" ng-click="mc.deleteMarker(markerId)">Delete</button></td>
     </tr>
   </table>

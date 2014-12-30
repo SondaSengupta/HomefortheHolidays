@@ -89,6 +89,30 @@
 
     })
 
+
+     .controller('EditController', function($http, $routeParams, $location){
+      var vm = this;
+      var id = $routeParams.id;
+      var url = "https://holidayhome.firebaseio.com/"+ id + ".json"
+      $http.get(url)
+      .success(function(data){
+        vm.newMarker = data;
+      })
+      .error(function(err){
+        console.log(err);
+      });
+
+      vm.addNewMarker = function(){
+        $http.put(url, vm.newMarker)
+          .success(function(data){
+            $location.path('/map')
+          })
+          .error(function(err){
+            console.log(err);
+          });
+      };
+    })
+
     .controller("MapController", function($http, $scope) {
       var vm = this;
       $http.get("https://holidayhome.firebaseio.com/.json")
@@ -192,7 +216,7 @@
         console.log(err);
       })
     }
-    
+
     // DREAM CODE FOR "ADD YOUR OWN RATING" BUTTON
     // vm.rating = function(){
     //   var counter = 0

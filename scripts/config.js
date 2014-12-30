@@ -14,6 +14,11 @@
         controller: "MapController",
         controllerAs: "mc"
       })
+      .when('/:id/edit', {
+        templateUrl: 'views/map.html',
+        controller: 'EditController',
+        controllerAs: 'editc'
+      })
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginController',
