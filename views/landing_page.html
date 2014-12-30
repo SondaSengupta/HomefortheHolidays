@@ -1,11 +1,45 @@
+<!--   navbar -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand">Homes for the Holidays!</a>
+      </div> <!-- navbar header end -->
 
-<h1> Love viewing Christmas lights?</h1>
-<h1>We do too! </h1>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <a href="#" class="btn navbar-btn navbar-right btn-info">View Map</a>
+        <ul class="nav navbar-nav">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#mapview">View Map</a></li>
+          <li><a href="#signup">Sign In</a></li>
+        </ul>
+      </div>
+    </div> <!-- container end -->
+  </nav> <!-- end navbar -->
+
+<!-- Jumpotron -->
+  <div class="jumbotron">
+    <div class="container text-center">
+      <h1> Homes for the Holidays</h1>
+      <p> Love Christmas Lights? We do too!</p>
+
+      <div class="btn-group">
+        <a class="btn btn-lg btn-default" href="#mapview">View the Map</a>
+        <a class="btn btn-lg btn-info" href="#">Shop for Lights</a>
+        <a class="btn btn-lg btn-default" href="#">Spread the Cheer</a>
+      </div>
+    </div> <!-- end container -->
+  </div> <!-- end jumpotron -->
+
+<div class="startsection">
+</div>
 
 <a class="btn btn-success" href="/#/login">Login</a>
 <a class="btn btn-success" href="/#/map">View Map</a>
-<img ng-src="http://cdn.morguefile.com/imageData/public/files/t/thesuccess/preview/fldr_2011_03_31/file8301301589263.jpg"></img>
-
 
 <ui-gmap-google-map id="mapCanvas" center="map.center" zoom="map.zoom" control="map.control">
   <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options" icon="marker.icon">

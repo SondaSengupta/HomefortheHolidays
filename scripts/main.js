@@ -3,7 +3,6 @@
 
   angular.module("myApp", [ "ngRoute","uiGmapgoogle-maps" ] )
 
-    // .constant('FIREBASE_URL', "https://holidayhome.firebaseio.com")
 
      .controller('ChangePasswordController', function($scope, $location){
       var vm = this;
