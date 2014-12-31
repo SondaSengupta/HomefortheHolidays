@@ -1,4 +1,4 @@
-<!--   navbar -->
+<!--NAVBAR -->
   <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
     <div class="container">
       <div class="navbar-header">
@@ -11,17 +11,19 @@
       </div> <!-- navbar header end -->
 
       <div class="collapse navbar-collapse" id="navbar-collapse">
-        <a href="#" class="btn navbar-btn navbar-right btn-info">View Map</a>
+        <a class="btn btn-info navbar-btn navbar-right" href="/#/login">Login</a>
+        <a class="btn btn-default navbar-btn navbar-right" href="/#/map">View Map</a>
         <ul class="nav navbar-nav">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#mapview">View Map</a></li>
-          <li><a href="#signup">Sign In</a></li>
+          <li><a href="/#/">Home</a></li>
+          <li><a href="/#/?scrollTo=mapCanvas">View Map</a></li>
+          <li><a href="/#/?scrollTo=gallery">Gallery</a></li>
+          <li><a href="/#/?scrollTo=register">Spread the Cheer!</a></li>
         </ul>
       </div>
     </div> <!-- container end -->
   </nav> <!-- end navbar -->
 
-<!-- Jumpotron -->
+<!--JUMBOTRON -->
   <div class="jumbotron">
     <div class="container text-center">
       <h1> Homes for the Holidays</h1>
@@ -35,28 +37,110 @@
     </div> <!-- end container -->
   </div> <!-- end jumpotron -->
 
-<div class="startsection">
+<!--MAP CANVAS-->
+<div class="container text-center">
+  <h1> View Lights in your Area</h1>
+  <ui-gmap-google-map id="mapCanvas" center="map.center" zoom="map.zoom" control="map.control">
+    <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options" icon="marker.icon">
+      <ui-gmap-window isIconVisibleOnClick="true">
+        <p>{{marker.message}}</p>
+      </ui-gmap-window>
+    </ui-gmap-marker>
+
+    <ui-gmap-marker ng-repeat="(markerId, list) in mc.Marker"
+            coords="list" idkey="markerId" icon="marker.icon2" options="marker.options">
+      <ui-gmap-window isIconVisibleOnClick="true">
+        <p>{{list.message}} from {{list.address}}</p>
+      </ui-gmap-window>
+    </ui-gmap-marker>
+  </ui-gmap-google-map>
+
+  <button class="btn btn-success" ng-click="mc.refreshMap()">Recenter this Map</button>
 </div>
 
-<a class="btn btn-success" href="/#/login">Login</a>
-<a class="btn btn-success" href="/#/map">View Map</a>
+<!-- GALLERY CAROUSEL-->
+<div class="container">
+  <div class="page-header" id="gallery">
+    <h2> Check Out how Others have Decorated their Homes </h2>
+  </div>
+  <div class="carousel slide" id="carousel" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel" data-slide-to="1"></li>
+      <li data-target="#carousel" data-slide-to="2"></li>
+      <li data-target="#carousel" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="../img/lightedanimals.jpg" alt="Animal Decorations">
+        <div class="carousel-caption">
+          <p> A winter wonderland for animals </p>
+        </div>
+      </div>
 
-<ui-gmap-google-map id="mapCanvas" center="map.center" zoom="map.zoom" control="map.control">
-  <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options" icon="marker.icon">
-    <ui-gmap-window isIconVisibleOnClick="true">
-      <p>{{marker.message}}</p>
-    </ui-gmap-window>
-  </ui-gmap-marker>
+      <div class="item">
+        <img src="../img/lightedanimals.jpg" alt="Animal Decorations">
+      </div>
 
-  <ui-gmap-marker ng-repeat="(markerId, list) in mc.Marker"
-          coords="list" idkey="markerId" icon="marker.icon2" options="marker.options">
-    <ui-gmap-window isIconVisibleOnClick="true">
-      <p>{{list.message}} from {{list.address}}</p>
-    </ui-gmap-window>
-  </ui-gmap-marker>
-</ui-gmap-google-map>
+      <div class="item">
+        <img src="../img/lightedanimals.jpg" alt="Animal Decorations">
+      </div>
 
-<button class="btn btn-success" ng-click="mc.refreshMap()">Recenter this Map</button>
+      <div class="item">
+        <img src="../img/lightedanimals.jpg" alt="Animal Decorations">
+      </div>
+    </div>
+    <a href="" class="left carousel-control" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
 
-<h1>Spread the Cheer!</h1>
-<h2>Sign in to Share a House you Love!</h2>
+    <a href="" class="right carousel-control" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div>
+</div>
+
+<!--REGISTER CALL TO ACTION-->
+<div class="container text-center" id="register">
+  <hr>
+  <h1>Spread the Cheer!</h1>
+  <h2>Register to Share a House you Love!</h2>
+  <form name="loginForm" class= "form-inline" ng-submit="login.login()" novalidate>
+    <div class="form-group" ng-class="{'has-error': loginForm.$dirty && !login.email}">
+      <label>Email Address</label>
+      <input class="form-control" type="email" placeholder="Step 1: Add an Email" ng-model="login.email" required>
+    </div>
+    <div class="form-group" ng-class="{'has-error': loginForm.$dirty && !login.password}">
+      <label>Password</label>
+      <input class="form-control" type="password" placeholder="Step 2: Add a Password"ng-model="login.password" required>
+    </div>
+    <div ng-click="login.register()" class="btn btn-default btn-danger" ng-class="{disabled: loginForm.$invalid}">Register</div>
+  </form>
+  <hr>
+</div>
+
+<!--FEEDBACK-->
+<div class="container-fluid well">
+  <h1>Feedback about our Site</h1>
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-lg-4">
+      <blockquote>
+        <p> "I wanted to show my daughter the lights in our area. This site makes it easy!"
+        </p>
+        <footer>Cheerful Mom</footer>
+      </blockquote>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-4">
+      <blockquote>
+        <p> "I had no idea what beautiful displays my neighbors have created until the site showed these listings."</p>
+        <footer>Awed Fellow Homeowner</footer>
+      </blockquote>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-4">
+      <blockquote>
+        <p> "This site is only useful once a year."</p>
+        <footer>Yearly Lights Consumer</footer>
+      </blockquote>
+    </div>
+  </div>
+</div>

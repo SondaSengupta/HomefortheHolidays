@@ -33,6 +33,6 @@
         controller: 'ChangePasswordController',
         controllerAs: 'changepw'
       })
-     .otherwise({redirectTo: '/'});
+      .otherwise({redirectTo: '/'});
    })
 }());

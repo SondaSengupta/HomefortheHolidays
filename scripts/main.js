@@ -3,6 +3,13 @@
 
   angular.module("myApp", [ "ngRoute","uiGmapgoogle-maps" ] )
 
+  .run(function($rootScope, $location, $anchorScroll, $routeParams) {
+    $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
+      $location.hash($routeParams.scrollTo);
+      $anchorScroll();
+    });
+  })
+
 
      .controller('ChangePasswordController', function($scope, $location){
       var vm = this;
