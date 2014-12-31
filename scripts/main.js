@@ -1,7 +1,7 @@
 ;(function() {
   "use strict";
 
-  angular.module("myApp", [ "ngRoute","uiGmapgoogle-maps" ] )
+  angular.module("myApp", [ "ngRoute","uiGmapgoogle-maps", "smoothScroll" ] )
 
   .run(function($rootScope, $location, $anchorScroll, $routeParams) {
     $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
