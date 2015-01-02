@@ -48,17 +48,7 @@
   </div>
 </div>
 
-    <div id="panel">
-      <h3> Get Coordinates </h3>
-      <label>Type Address to Convert to Coordinates</label>
-      <input id="address" type="textbox" value="Nashville, TN">
-      <input type="submit" class="btn btn-success" value="Go!" ng-click="mc.getAddress()">
-    </div>
 
-    <div id="currentCoords">
-      <label>Use Current Location for Coordinates</label>
-      <input type="submit" class="btn btn-success" value="Do it!" ng-click="mc.getLocation()">
-    </div>
 
     <form name="markerForm" ng-submit="markerForm.$valid && mc.addNewMarker()" novalidate>
       <h3> Add a Marker </h3>
@@ -98,7 +88,6 @@
       </div>
       <input type="submit" class="btn btn-success" value="Submit to Add Marker" ng-class="{disabled: markerForm.$invalid}" />
       <input type="submit" class="btn btn-warning" value="Clear Form" ng-click="mc.clearForm()" />
-
     </form>
 
   <table>

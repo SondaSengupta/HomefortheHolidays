@@ -30,3 +30,8 @@ body {
 .scrollpadding {
   padding-top: 50px;
 }
+
+#address {
+  width: 300px;
+  margin-bottom: 10px;
+}

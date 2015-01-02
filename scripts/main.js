@@ -212,6 +212,8 @@
       zoom: 5
     }
 
+    $scope.options = {scrollwheel: false};
+
     $scope.marker = {
       id: 0,
       message: "Current Location",

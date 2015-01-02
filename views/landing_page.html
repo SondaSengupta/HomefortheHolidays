@@ -18,6 +18,8 @@
           <li><a href="/#/?scrollTo=mapCanvas" scroll-to="mapCanvas">View Map</a></li>
           <li><a href="/#/?scrollTo=gallery" scroll-to="gallery">Gallery</a></li>
           <li><a href="/#/?scrollTo=register" scroll-to="register">Spread the Cheer!</a></li>
+          <li><a href="/#/?scrollTo=faq" scroll-to="faq">FAQ</a></li>
+
         </ul>
       </div>
     </div> <!-- container end -->
@@ -40,7 +42,7 @@
 <!--MAP CANVAS-->
 <div class="container text-center scrollpadding" id="mapCanvas">
   <h1> View Lights in your Area</h1>
-  <ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control">
+  <ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control" options="options">
     <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options" icon="marker.icon">
       <ui-gmap-window isIconVisibleOnClick="true">
         <p>{{marker.message}}</p>
@@ -50,32 +52,43 @@
     <ui-gmap-marker ng-repeat="(markerId, list) in mc.Marker"
             coords="list" idkey="markerId" icon="marker.icon2" options="marker.options">
       <ui-gmap-window isIconVisibleOnClick="true">
-        <p>{{list.message}} from {{list.address}}</p>
+        <div class="marker-infobox">
+          <h5>{{list.address}}</h5>
+          <img class="add-img" ng-src="{{list.image}}">
+          <p>{{list.message}} <br><i>{{list.signature}}</i><br>{{list.rating}}</p>
+    <!--       <button class="btn btn-warning" ng-click="mc.rating()">Add your Rating</button> -->
+        </div>
       </ui-gmap-window>
     </ui-gmap-marker>
+
   </ui-gmap-google-map>
 
-  <button class="btn btn-success" ng-click="mc.refreshMap()">Recenter this Map</button>
-  <button class="btn btn-info" ng-click="mc.centerbyGeolocation()">Recenter by Current Location</button>
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-body">
-        <h3> Address Center </h3>
-        <label>Type Address to center the Map</label>
-        <input id="address" type="textbox" value="Nashville, TN">
-        <input type="submit" class="btn btn-success" value="Go!" ng-click="mc.centerbyAddress()">
+      <div class="row text-center">
+        <h3> CENTER THIS MAP </h3>
+        <div class="col-md-4">
+            <h3> By an Address </h3>
+            <input class="input-large" id="address" placeholder="Type address here to center the map.">
+            <input type="submit" class="btn btn-success" value="Recenter by Address" ng-click="mc.centerbyAddress()">
         </div>
-      </div>
 
-</div>
+        <div class="col-md-4">
+          <h3>  By Your Location </h3>
+          <button class="btn btn-info" ng-click="mc.centerbyGeolocation()">Recenter by Geolocation</button>
+          <p> Accurate, but will take a few seconds to load. </p>
+        </div>
+
+        <div class="col-md-4">
+          <h3> By Default Coordinates </h3>
+          <button class="btn btn-success" ng-click="mc.refreshMap()">Recenter by Defaults</button>
+        </div>
+    </div>
+
+</div> <!-- end mapCanvas container -->
 
 <!-- GALLERY CAROUSEL-->
-<div class="container scrollpadding">
-  <div class="page-header" id="gallery">
-    <h2> Check Out how Others have Decorated their Homes </h2>
-  </div>
+<div class="container-fluid scrollpadding text-center" id="gallery">
+  <hr>
+    <h1> Top Decorations Gallery </h1>
   <div class="carousel slide" id="carousel" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -103,11 +116,11 @@
         <img src="../img/lightedanimals.jpg" alt="Animal Decorations">
       </div>
     </div>
-    <a href="" class="left carousel-control" data-slide="prev">
+    <a href="/#/#carousel" class="left carousel-control" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left"></span>
     </a>
 
-    <a href="" class="right carousel-control" data-slide="next">
+    <a href="/#/#carousel" class="right carousel-control" data-slide="next">
       <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
   </div>
@@ -159,37 +172,33 @@
 </div>
 
 <!-- FAQ -->
-<div class="container scrollpadding">
-  <h1>Frequently Asked Questions</h1>
-  <div class="panel-group" id="accordian">
-    <div class="panel panel-default">
-    <div class="panel-heading">
+<div class="container scrollpadding" id="faq">
+    <h1>Frequently Asked Questions</h1>
+    <div class="panel-group">
+      <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title">
+            What is this site about?
+        </div><!--  end panel title -->
+        <div>
+          <div class="panel-body">
+            To show listings of houses that have been decorated for the holidays.
+          </div>
+        </div>
+      </div> <!-- end panel heading -->
+    </div> <!-- end panel default -->
+
+    <div class="panel panel-default ">
+      <div class="panel-heading">
       <div class="panel-title">
-        <a href="#collapse-1" data-toggle="collapse" data-parent="#accordian">
-          What is this site about?
-        </a>
+          Who puts up these listings?
       </div><!--  end panel title -->
-      <div id="" class="panel-collapse collapse in">
+      <div>
         <div class="panel-body">
-          To show listings of houses that have been decorated for the holidays.
+          Anyone who is registered can add a home to the lights map. Registration is as simple as entering your email and adding a password to create an account.
         </div>
       </div>
-    </div> <!-- end panel heading -->
-  </div> <!-- end panel default -->
-
-  <div class="panel panel-default ">
-  <div class="panel-heading">
-    <div class="panel-title">
-      <a href="" data-toggle="collapse" data-parent="#accordian">
-        Who puts up these listings?
-      </a>
-    </div><!--  end panel title -->
-    <div id="collapse-2" class="panel-collapse collapse in">
-      <div class="panel-body">
-        Anyone who is registered can add a home to the lights map. Registration is as simple as entering your email and adding a password to create an account.
-      </div>
-    </div>
-  </div> <!-- end panel heading -->
-</div> <!-- end panel default -->
-  </div> <!-- end panel group -->
+      </div> <!-- end panel heading -->
+    </div> <!-- end panel default -->
+    </div> <!-- end panel group -->
 </div><!--  end container -->
