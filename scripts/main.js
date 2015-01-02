@@ -151,6 +151,24 @@
       });
     }
 
+    vm.centerbyAddress = function() {
+      var address = document.getElementById('address').value;
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          var addressCoordsLat = results[0].geometry.location.k;
+          var addressCoordsLng = results[0].geometry.location.D;
+          console.log("Lat is " + addressCoordsLat + " and Long is " + addressCoordsLng);
+
+        $scope.map.control.refresh({ latitude: addressCoordsLat, longitude: addressCoordsLng });
+        $scope.map.control.getGMap().setZoom(10);
+        return;
+
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
+
     vm.getLocation = function() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(location) {
@@ -160,6 +178,22 @@
 
           $("input#latitude").val($scope.lat).trigger("input");
           $("input#longitude").val($scope.lng).trigger("input");
+        });
+      } else {
+        alert("Geolocation is not supported. Please type address or coordinates manually");
+      }
+    }
+
+    vm.centerbyGeolocation = function() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(location) {
+          $scope.lat = location.coords.latitude,
+          $scope.lng = location.coords.longitude;
+          $scope.$apply();
+        $scope.map.control.refresh({ latitude: $scope.lat, longitude: $scope.lng });
+        $scope.map.control.getGMap().setZoom(10);
+        return;
+
         });
       } else {
         alert("Geolocation is not supported. Please type address or coordinates manually");

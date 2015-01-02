@@ -56,6 +56,19 @@
   </ui-gmap-google-map>
 
   <button class="btn btn-success" ng-click="mc.refreshMap()">Recenter this Map</button>
+  <button class="btn btn-info" ng-click="mc.centerbyGeolocation()">Recenter by Current Location</button>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+        <h3> Address Center </h3>
+        <label>Type Address to center the Map</label>
+        <input id="address" type="textbox" value="Nashville, TN">
+        <input type="submit" class="btn btn-success" value="Go!" ng-click="mc.centerbyAddress()">
+        </div>
+      </div>
+
 </div>
 
 <!-- GALLERY CAROUSEL-->
