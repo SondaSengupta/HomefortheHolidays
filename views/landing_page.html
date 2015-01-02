@@ -24,23 +24,23 @@
   </nav> <!-- end navbar -->
 
 <!--JUMBOTRON -->
-  <div class="jumbotron" id="jumbotron">
+  <div class="jumbotron scrollpadding" id="jumbotron">
     <div class="container text-center">
       <h1> Homes for the Holidays</h1>
       <p> Love Christmas Lights? We do too!</p>
 
       <div class="btn-group">
-        <a class="btn btn-lg btn-default" href="#mapview">View the Map</a>
-        <a class="btn btn-lg btn-info" href="#">Shop for Lights</a>
-        <a class="btn btn-lg btn-default" href="#">Spread the Cheer</a>
+        <a class="btn btn-lg btn-default" href="/#/?scrollTo=mapCanvas" scroll-to="mapCanvas">View the Map</a>
+        <a class="btn btn-lg btn-info" href="http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=christmas+lights">Shop for Lights</a>
+        <a class="btn btn-lg btn-default" href="/#/?scrollTo=register" scroll-to="register">Spread the Cheer</a>
       </div>
     </div> <!-- end container -->
   </div> <!-- end jumpotron -->
 
 <!--MAP CANVAS-->
-<div class="container text-center">
+<div class="container text-center scrollpadding" id="mapCanvas">
   <h1> View Lights in your Area</h1>
-  <ui-gmap-google-map id="mapCanvas" center="map.center" zoom="map.zoom" control="map.control">
+  <ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control">
     <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options" icon="marker.icon">
       <ui-gmap-window isIconVisibleOnClick="true">
         <p>{{marker.message}}</p>
@@ -59,7 +59,7 @@
 </div>
 
 <!-- GALLERY CAROUSEL-->
-<div class="container">
+<div class="container scrollpadding">
   <div class="page-header" id="gallery">
     <h2> Check Out how Others have Decorated their Homes </h2>
   </div>
@@ -101,7 +101,7 @@
 </div>
 
 <!--REGISTER CALL TO ACTION-->
-<div class="container text-center" id="register">
+<div class="container text-center scrollpadding" id="register">
   <hr>
   <h1>Spread the Cheer!</h1>
   <h2>Register to Share a House you Love!</h2>
@@ -120,7 +120,7 @@
 </div>
 
 <!--FEEDBACK-->
-<div class="container-fluid well">
+<div class="container-fluid well scrollpadding">
   <h1>Feedback about our Site</h1>
   <div class="row">
     <div class="col-sm-6 col-md-4 col-lg-4">
@@ -146,7 +146,7 @@
 </div>
 
 <!-- FAQ -->
-<div class="container">
+<div class="container scrollpadding">
   <h1>Frequently Asked Questions</h1>
   <div class="panel-group" id="accordian">
     <div class="panel panel-default">

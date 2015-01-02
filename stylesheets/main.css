@@ -27,10 +27,6 @@ body {
   line-height:200%;
 }
 
-.startsection {
-  background-image: url("../img/lightedanimals.jpg");
-  height: 800px;
-  font-family: arial;
-  background-size: 800px 600px;
-  background-repeat: no-repeat;
+.scrollpadding {
+  padding-top: 50px;
 }
