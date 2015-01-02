@@ -133,7 +133,8 @@
     var geocoder = new google.maps.Geocoder();
 
     vm.getAddress = function() {
-      var address = document.getElementById('address').value;
+      var address = document.getElementById('address-marker').value;
+      console.log(address);
       geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           var addressCoordsLat = results[0].geometry.location.k;
@@ -186,13 +187,19 @@
 
     vm.centerbyGeolocation = function() {
       if (navigator.geolocation) {
+        $scope.setProgress = 25;
         navigator.geolocation.getCurrentPosition(function(location) {
+          $scope.setProgress = 90;
           $scope.lat = location.coords.latitude,
           $scope.lng = location.coords.longitude;
           $scope.$apply();
+          $scope.setProgress = 100;
         $scope.map.control.refresh({ latitude: $scope.lat, longitude: $scope.lng });
         $scope.map.control.getGMap().setZoom(10);
+
+
         return;
+
 
         });
       } else {
