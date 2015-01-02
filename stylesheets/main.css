@@ -35,3 +35,12 @@ body {
   width: 300px;
   margin-bottom: 10px;
 }
+
+.login {
+  margin-top: 100px;
+  padding: 30px;
+  max-width: 600px;
+  min-width: 300px;
+  background-color: white;
+  border-radius: 15px;
+}

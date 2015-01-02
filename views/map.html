@@ -3,7 +3,7 @@
     <a class="btn btn-danger" href="/#/logout">Logout</a>
     <button class="btn btn-success" ng-click="mc.refreshMap()">Recenter this Map</button>
 
-    <ui-gmap-google-map id="mapCanvas" center="map.center" zoom="map.zoom" control="map.control">
+    <ui-gmap-google-map id="mapCanvas" center="map.center" zoom="map.zoom" control="map.control" options="options">
       <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options" icon="marker.icon">
         <ui-gmap-window isIconVisibleOnClick="true">
           <p>{{marker.message}}</p>
