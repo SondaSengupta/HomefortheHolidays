@@ -31,9 +31,13 @@ body {
   padding-top: 50px;
 }
 
-#address {
+#address, #address-marker {
   width: 300px;
   margin-bottom: 10px;
+}
+
+#markersubmit{
+  margin-top: 15px;
 }
 
 .login {

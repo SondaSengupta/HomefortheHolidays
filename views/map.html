@@ -1,97 +1,150 @@
+<!--NAVBAR -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="/#/" class="navbar-brand">Homes for the Holidays!</a>
+      </div> <!-- navbar header end -->
 
-  <div class="container" ng-controller="MapController as mc">
-    <a class="btn btn-danger" href="/#/logout">Logout</a>
-    <button class="btn btn-success" ng-click="mc.refreshMap()">Recenter this Map</button>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <a class="btn btn-danger navbar-btn navbar-right" href="/#/logout">Logout</a>
+        <a class="btn btn-default navbar-btn navbar-right" href="/#/map">View Map</a>
+        <ul class="nav navbar-nav">
+          <li><a href="/#/map" scroll-to="login-map">Top of Page</a></li>
+          <li><a href="/#/?scrollTo=login-map" scroll-to="login-map">View Map</a></li>
+          <li><a href="/#/?scrollTo=marker-form" scroll-to="marker-form">Add a Marker</a></li>
+          <li><a href="/#/?scrollTo=marker-table" scroll-to="marker-table">Marker List</a></li>
+        </ul>
+      </div>
+    </div> <!-- container end -->
+  </nav> <!-- end navbar -->
 
-    <ui-gmap-google-map id="mapCanvas" center="map.center" zoom="map.zoom" control="map.control" options="options">
-      <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options" icon="marker.icon">
-        <ui-gmap-window isIconVisibleOnClick="true">
-          <p>{{marker.message}}</p>
-        </ui-gmap-window>
-      </ui-gmap-marker>
 
-      <ui-gmap-marker ng-repeat="(markerId, list) in mc.Marker"
-              coords="list" idkey="markerId" icon="marker.icon2" options="marker.options">
-        <ui-gmap-window isIconVisibleOnClick="true">
-          <div class="marker-infobox">
-            <h5>{{list.address}}</h5>
-            <img class="add-img" ng-src="{{list.image}}">
-            <p>{{list.message}} <br><i>{{list.signature}}</i><br>{{list.rating}}</p>
-      <!--       <button class="btn btn-warning" ng-click="mc.rating()">Add your Rating</button> -->
-          </div>
-        </ui-gmap-window>
-      </ui-gmap-marker>
+<!--MAP CANVAS-->
+<div class="container text-center scrollpadding" id="login-map">
 
-    </ui-gmap-google-map>
+  <h1> View Lights in your Area</h1>
 
-<div class="container">
   <div class="row">
     <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-body">
-        <h3> Get Coordinates </h3>
-        <label>Type Address to Convert to Coordinates</label>
-        <input id="address" type="textbox" value="Nashville, TN">
-        <input type="submit" class="btn btn-success" value="Go!" ng-click="mc.getAddress()">
-        </div>
-      </div>
+        <h3> Center Map by Address </h3>
+        <input class="input-large" id="address" placeholder="Type address here to center the map.">
+        <input type="submit" class="btn btn-success" value="Go!" ng-click="mc.centerbyAddress()">
     </div>
 
     <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-body">
-        <label>Use Current Location for Coordinates</label>
-        <input type="submit" class="btn btn-success" value="Do it!" ng-click="mc.getLocation()">
-        </div>
-      </div>
+      <h3>  Center Map by Geolocation </h3>
+      <button class="btn btn-info" ng-click="mc.centerbyGeolocation()">Recenter by Geolocation</button>
+      <p> Accurate, but will take a few seconds to load. </p>
     </div>
   </div>
+
+  <ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control" options="options">
+    <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options" icon="marker.icon">
+      <ui-gmap-window isIconVisibleOnClick="true">
+        <p>{{marker.message}}</p>
+      </ui-gmap-window>
+    </ui-gmap-marker>
+
+    <ui-gmap-marker ng-repeat="(markerId, list) in mc.Marker"
+            coords="list" idkey="markerId" icon="marker.icon2" options="marker.options">
+      <ui-gmap-window isIconVisibleOnClick="true">
+        <div class="marker-infobox">
+          <h5>{{list.address}}</h5>
+          <img class="add-img" ng-src="{{list.image}}">
+          <p>{{list.message}} <br><i>{{list.signature}}</i><br>{{list.rating}}</p>
+    <!--       <button class="btn btn-warning" ng-click="mc.rating()">Add your Rating</button> -->
+        </div>
+      </ui-gmap-window>
+    </ui-gmap-marker>
+
+  </ui-gmap-google-map>
 </div>
 
 
+<div class="container scrollpadding" id="marker-form">
 
-    <form name="markerForm" ng-submit="markerForm.$valid && mc.addNewMarker()" novalidate>
-      <h3> Add a Marker </h3>
-      <div>
-        <label for="Addressform">Address</label>
-        <input class="addressform" id="addressform" type="text" ng-model = "mc.newMarker.address">
+  <div class="row">
+      <h1> Add a Marker </h1>
+      <div class="col-md-6">
+          <h3> Get Coordinates by Address </h3>
+          <input id="address-marker" placeholder="Type address to autofill coordinates.">
+          <input type="submit" class="btn btn-success" value="Go!" ng-click="mc.getAddress()">
       </div>
-      <div>
-        <label for="Latitude">Latitude</label>
-        <input class="latitude" id="latitude" type="text" ng-model = "mc.newMarker.latitude" required>
-      </div>
-      <div>
-        <label for="Longitude">Longitude</label>
-        <input class="longitude" id="longitude" type="text" ng-model = "mc.newMarker.longitude" required>
-      </div>
-      <div>
-        <label for="Message">Message</label>
-        <input class="message" id="message" type="text" ng-model = "mc.newMarker.message">
-      </div>
-      <div>
-        <label for="Image">Copy Image URL</label>
-        <input class="image" id="image" type="url" ng-model = "mc.newMarker.image">
-      </div>
-      <div>
-        <label>Rate It!</label>
-        <select class="rating" ng-model="mc.newMarker.rating">
-          <option>&#9733;</option>
-          <option>&#9733;&#9733;</option>
-          <option>&#9733;&#9733;&#9733;</option>
-          <option>&#9733;&#9733;&#9733;&#9733;</option>
-          <option>&#9733;&#9733;&#9733;&#9733;&#9733;</option>
-        </select>
-      </div>
-      <div>
-        <label for="Signature">Add a Name for Attribution</label>
-        <input class="signature" id="signature" value="anonymous" type="text" ng-model = "mc.newMarker.signature">
-      </div>
-      <input type="submit" class="btn btn-success" value="Submit to Add Marker" ng-class="{disabled: markerForm.$invalid}" />
-      <input type="submit" class="btn btn-warning" value="Clear Form" ng-click="mc.clearForm()" />
-    </form>
 
-  <table>
-    <h3> Marker List </h3>
+      <div class="col-md-6">
+      <h3>  Get Coordinates by Geolocation </h3>
+      <button class="btn btn-info" ng-click="mc.getLocation()">Use Geolocation</button>
+      <p> Accurate, but will take a few seconds to load. </p>
+      </div>
+  </div><!--  end coords row -->
+  <hr>
+  <form name="markerForm" ng-submit="markerForm.$valid && mc.addNewMarker()" novalidate>
+    <div class="row">
+      <div class="col-sm-6 col-md-6 col-lg-6">
+        <h3> Required Fields </h3>
+        <div>
+          <label for="Addressform">Address</label>
+          <input class="addressform form-control" id="addressform" type="text" ng-model = "mc.newMarker.address">
+        </div>
+        <div>
+          <label for="Latitude">Latitude</label>
+          <input class="latitude form-control" id="latitude" type="text" ng-model = "mc.newMarker.latitude" required>
+        </div>
+        <div>
+          <label for="Longitude">Longitude</label>
+          <input class="longitude form-control" id="longitude" type="text" ng-model = "mc.newMarker.longitude" required>
+        </div>
+      </div>
+        <div class="col-sm-6 col-md-6 col-lg-6">
+          <h3> Add Some Personality </h3>
+          <div>
+            <label for="Image">Copy Image URL</label>
+            <input class="image form-control" id="image" type="url" ng-model = "mc.newMarker.image">
+          </div>
+          <div>
+            <label>Rate It!</label>
+            <select class="rating form-control" ng-model="mc.newMarker.rating">
+              <option>&#9733;</option>
+              <option>&#9733;&#9733;</option>
+              <option>&#9733;&#9733;&#9733;</option>
+              <option>&#9733;&#9733;&#9733;&#9733;</option>
+              <option>&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+            </select>
+          </div>
+          <div>
+            <label for="Signature">Add a Name for Attribution</label>
+            <input class="signature form-control" id="signature" value="anonymous" type="text" ng-model = "mc.newMarker.signature">
+          </div>
+        </div> <!-- end personality form row -->
+      </div> <!-- end form row -->
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <label for="Message">Message</label>
+          <input class="message form-control" id="message" type="text" ng-model = "mc.newMarker.message">
+        </div>
+      </div>
+      <div class="row" id="markersubmit">
+        <div class="col-sm-4 col-md-4 col-lg-4">
+          <input type="submit" class="btn btn-warning btn-block" value="Clear Form" ng-click="mc.clearForm()" />
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+          <input type="submit" class="btn btn-success btn-block" value="Submit to Add Marker" ng-class="{disabled: markerForm.$invalid}" />
+
+        </div>
+      </div>
+  </form>
+
+</div> <!-- end marker-form container -->
+
+
+<div class="container scrollpadding text-center" id="marker-table">
+  <h1> Marker List </h1>
+  <table class="table table-hover">
     <tr>
       <th>Image Preview</th>
       <th>Latitude</th>
@@ -100,6 +153,7 @@
       <th>Address</th>
       <th>Rating</th>
       <th>Signature</th>
+      <th>Edit</th>
       <th> Delete </th>
     </tr>
     <tr ng-repeat="(markerId, list) in mc.Marker">
@@ -114,3 +168,4 @@
       <td><button class="btn btn-danger" ng-click="mc.deleteMarker(markerId)">Delete</button></td>
     </tr>
   </table>
+</div>
