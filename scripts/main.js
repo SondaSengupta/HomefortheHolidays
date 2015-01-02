@@ -172,9 +172,12 @@
 
     vm.getLocation = function() {
       if (navigator.geolocation) {
+        $scope.showProgress = 25;
         navigator.geolocation.getCurrentPosition(function(location) {
+          $scope.showProgress = 90;
           $scope.lat = location.coords.latitude,
           $scope.lng = location.coords.longitude;
+          $scope.showProgress = 100;
           $scope.$apply();
 
           $("input#latitude").val($scope.lat).trigger("input");
@@ -196,8 +199,6 @@
           $scope.setProgress = 100;
         $scope.map.control.refresh({ latitude: $scope.lat, longitude: $scope.lng });
         $scope.map.control.getGMap().setZoom(10);
-
-
         return;
 
 

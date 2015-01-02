@@ -75,6 +75,11 @@
           <h3>  By Your Location </h3>
           <button class="btn btn-info" ng-click="mc.centerbyGeolocation()">Recenter by Geolocation</button>
           <p> Accurate, but will take a few seconds to load. </p>
+          <div class="progress">
+            <div id="geoprogessbar" class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"  ng-style="{width : ( setProgress + '%' ) }">
+            {{setProgress}}% Complete
+            </div>
+        </div>
         </div>
 
         <div class="col-md-4">
