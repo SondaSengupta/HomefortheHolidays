@@ -7,14 +7,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/#/" class="navbar-brand">Homes for the Holidays!</a>
+        <a href="/#/" class="navbar-brand" id="light-brand">Homes for the Holidays!</a>
       </div> <!-- navbar header end -->
 
       <div class="collapse navbar-collapse" id="navbar-collapse">
         <a class="btn btn-info navbar-btn navbar-right" href="/#/login">Login</a>
-        <a class="btn btn-default navbar-btn navbar-right" href="/#/map">View Member's Map</a>
+        <a class="btn btn-default navbar-btn navbar-right" href="/#/map">Member's Map</a>
         <ul class="nav navbar-nav">
-          <li><a href="/#/" scroll-to="jumbotron">Home</a></li>
           <li><a href="/#/?scrollTo=mapCanvas" scroll-to="mapCanvas">View Map</a></li>
           <li><a href="/#/?scrollTo=gallery" scroll-to="gallery">Gallery</a></li>
           <li><a href="/#/?scrollTo=register" scroll-to="register">Spread the Cheer!</a></li>
@@ -40,14 +39,9 @@
   </div> <!-- end jumpotron -->
 
 <!--MAP CANVAS-->
-<div class="container text-center scrollpadding" id="mapCanvas">
+<div class="container-fluid text-center scrollpadding" id="mapCanvas">
   <h1> View Lights in your Area</h1>
   <ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control" options="options">
-    <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options" icon="marker.icon">
-      <ui-gmap-window isIconVisibleOnClick="true">
-        <p>{{marker.message}}</p>
-      </ui-gmap-window>
-    </ui-gmap-marker>
 
     <ui-gmap-marker ng-repeat="(markerId, list) in mc.Marker"
             coords="list" idkey="markerId" icon="marker.icon2" options="marker.options">
@@ -56,7 +50,6 @@
           <h5>{{list.address}}</h5>
           <img class="add-img" ng-src="{{list.image}}">
           <p>{{list.message}} <br><i>{{list.signature}}</i><br>{{list.rating}}</p>
-    <!--       <button class="btn btn-warning" ng-click="mc.rating()">Add your Rating</button> -->
         </div>
       </ui-gmap-window>
     </ui-gmap-marker>
@@ -92,7 +85,7 @@
 
 <!-- GALLERY CAROUSEL-->
 <div class="container-fluid scrollpadding text-center" id="gallery">
-  <hr>
+
     <h1> Top Decorations Gallery </h1>
   <div class="carousel slide" id="carousel" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -133,7 +126,7 @@
 
 <!--REGISTER CALL TO ACTION-->
 <div class="container text-center scrollpadding" id="register">
-  <hr>
+
   <h1>Spread the Cheer!</h1>
   <h2>Register to Share a House you Love!</h2>
   <form name="loginForm" class= "form-inline" ng-submit="login.login()" novalidate>
@@ -147,7 +140,7 @@
     </div>
     <div ng-click="login.register()" class="btn btn-default btn-danger" ng-class="{disabled: loginForm.$invalid}">Register</div>
   </form>
-  <hr>
+
 </div>
 
 <!--FEEDBACK-->

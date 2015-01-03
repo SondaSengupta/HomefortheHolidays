@@ -10,9 +10,6 @@
     });
   })
 
-
-
-
      .controller('ChangePasswordController', function($scope, $location){
       var vm = this;
       var ref = new Firebase('https://holidayhome.firebaseio.com');
@@ -279,7 +276,7 @@
       message: "Current Location",
       options: { animation: google.maps.Animation.DROP },
       //icon1: default red google maps icon. As default, no need to specify//
-      icon2: 'https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-08-24.png',
+      icon2: 'http://icons.iconarchive.com/icons/gpritiranjan/simple-christmas/32/bulb-icon.png',
       coords: {
         latitude: 36,
         longitude: -87

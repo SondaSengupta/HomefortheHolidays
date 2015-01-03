@@ -1,9 +1,31 @@
+@font-face {
+    font-family: CandyCane;
+    src: url(candycane.ttf);
+}
+
+@font-face {
+    font-family: CityofLight;
+    src: url(CityofLight.ttf);
+}
+
+
 .angular-google-map-container {
   height: 400px;
   }
 
-h1 {
+h1, #light-brand {
   text-align: center;
+  font-family: CityofLight, Impact;
+}
+
+.jumbotron{
+  background-image: url(../img/cityatnight.jpg);
+  color: lightgrey;
+  height: 600px;
+}
+icon {
+  height: 15px;
+  width: 15px;
 }
 
 td, th {
@@ -11,8 +33,10 @@ td, th {
 }
 
 body {
-  background-color: lightgrey;
+  background-image: url(../img/verybluewinterswirl.jpg);
+  background-color: lightblue;
 }
+
 
 .add-img{
   height: 100px;
