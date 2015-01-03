@@ -27,6 +27,10 @@ body {
   line-height:200%;
 }
 
+.navbarmargin{
+  margin-top: 50px;
+}
+
 .scrollpadding {
   padding-top: 50px;
 }
@@ -47,4 +51,14 @@ body {
   min-width: 300px;
   background-color: white;
   border-radius: 15px;
+}
+
+
+#show-pic {
+  display: block;
+  height: 40%;
+  width: 40%;
+  border-radius: 10%;
+  margin: auto;
+  margin-bottom: 20px;
 }
