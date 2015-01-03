@@ -21,6 +21,7 @@
 
   <div class="container login">
     <h3> Login to edit the map. </h3>
+    <h5> Note: Your username will be the start of your email without the "@***" address bit </h5>
     <form name="loginForm" ng-submit="login.login()" novalidate>
       <div class="form-group" ng-class="{'has-error': loginForm.$dirty && !login.email}">
         <input placeholder="Enter Email" class="form-control" type="email" ng-model="login.email" required>

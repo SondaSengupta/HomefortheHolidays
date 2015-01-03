@@ -11,6 +11,8 @@
   })
 
 
+
+
      .controller('ChangePasswordController', function($scope, $location){
       var vm = this;
       var ref = new Firebase('https://holidayhome.firebaseio.com');
@@ -37,7 +39,6 @@
 
     .controller('LogoutController', function($scope, $location){
       var ref = new Firebase('https://holidayhome.firebaseio.com');
-
       ref.unauth(function(){
         $location.path('/');
         $scope.$apply();
@@ -154,7 +155,7 @@
 
     })
 
-    .controller("MapController", function($http, $scope) {
+    .controller("MapController", function($http, $scope, $location) {
       var vm = this;
       $http.get("https://holidayhome.firebaseio.com/.json")
       .success(function(data) {
@@ -164,6 +165,7 @@
       .error(function(err) {
         console.log(err);
       })
+
 
     var geocoder = new google.maps.Geocoder();
 

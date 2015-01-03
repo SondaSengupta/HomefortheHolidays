@@ -12,12 +12,26 @@
       .when('/map', {
         templateUrl: "views/map.html",
         controller: "MapController",
-        controllerAs: "mc"
+        controllerAs: "mc",
+        resolve: { data:
+          function($location){
+            var ref = new Firebase('https://holidayhome.firebaseio.com');
+            var loggedIn = Boolean(ref.getAuth());
+            if (!loggedIn) { $location.path('/login'); }
+          }
+        }
       })
       .when('/:id/edit', {
         templateUrl: 'views/edit.html',
         controller: 'EditController',
-        controllerAs: 'editc'
+        controllerAs: 'editc',
+        resolve: { data:
+          function($location){
+            var ref = new Firebase('https://holidayhome.firebaseio.com');
+            var loggedIn = Boolean(ref.getAuth());
+            if (!loggedIn) { $location.path('/login'); }
+          }
+        }
       })
       .when('/login', {
         templateUrl: 'views/login.html',
@@ -31,7 +45,14 @@
       .when('/changepassword', {
         templateUrl: 'views/changepassword.html',
         controller: 'ChangePasswordController',
-        controllerAs: 'changepw'
+        controllerAs: 'changepw',
+        resolve: { data:
+          function($location){
+            var ref = new Firebase('https://holidayhome.firebaseio.com');
+            var loggedIn = Boolean(ref.getAuth());
+            if (!loggedIn) { $location.path('/login'); }
+          }
+        }
       })
        .otherwise({redirectTo: '/'});
    })
