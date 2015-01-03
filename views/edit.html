@@ -28,6 +28,8 @@
     <li class="list-group-item"> <strong class="glyphicon glyphicon-globe"></strong>   Located in coordinates ({{editc.newMarker.latitude}}, {{editc.newMarker.longitude}})</li>
     <li class="list-group-item"> <strong class="glyphicon glyphicon-pencil"></strong>   {{editc.newMarker.message}}</li>
     <li class="list-group-item"> <strong class="glyphicon glyphicon-thumbs-up"></strong>   {{editc.newMarker.signature}} gave it {{editc.newMarker.rating}}</li>
+    <li class="list-group-item"> <strong class="glyphicon glyphicon-thumbs-up"></strong> {{editc.newMarker.editsignature}}</li>
+
   </ul>
 
 </div>
@@ -36,7 +38,7 @@
 <div class="container scrollpading" id="edit-marker">
   <hr>
   <h1> Edit this Marker </h1>
-  <form name="markerForm" ng-submit="markerForm.$valid && editc.addNewMarker()" novalidate>
+  <form name="markerForm" novalidate>
     <div class="row">
       <div class="col-sm-6 col-md-6 col-lg-6">
         <h3> Required Fields </h3>
@@ -70,8 +72,12 @@
             </select>
           </div>
           <div>
-            <label for="Signature">Add a Name for Attribution</label>
-            <input class="signature form-control" id="signature" value="anonymous" type="text" ng-model = "editc.newMarker.signature">
+            <label for="Signature">Created by</label>
+            <input disabled class="form-control" type="text" ng-model = "editc.newMarker.signature">
+          </div>
+          <div id="diveditsignature">
+            <input disabled class="editsignature form-control" id="editsignature" type="text" placeholder="click to add username" ng-model = "editc.newMarker.editsignature">
+            <input type="submit" class="btn btn-success" value="Attribute Yourself" ng-click="editc.editUsername()"/>
           </div>
         </div> <!-- end personality form row -->
       </div> <!-- end form row -->
@@ -83,7 +89,12 @@
       </div>
       <div class="row" id="markersubmit">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <input type="submit" class="btn btn-success btn-block" value="Submit to Update Marker" ng-class="{disabled: markerForm.$invalid}" />
+          <input type="submit" class="btn btn-success btn-block" value="Submit to Update Marker"  ng-click="editc.addNewMarker()">
+        </div>
+      </div>
+      <div class="row" id="markerdelete">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <input type="submit" class="btn btn-danger btn-block" value="Permanently Delete This Marker"  ng-click="editc.deleteEditMarker()">
         </div>
       </div>
   </form>
