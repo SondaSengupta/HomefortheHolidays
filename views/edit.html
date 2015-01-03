@@ -1,0 +1,53 @@
+<div class="container">
+  <form name="markerForm" ng-submit="markerForm.$valid && editc.addNewMarker()" novalidate>
+    <div class="row">
+      <div class="col-sm-6 col-md-6 col-lg-6">
+        <h3> Required Fields </h3>
+        <div>
+          <label for="Addressform">Address</label>
+          <input class="addressform form-control" id="addressform" type="text" ng-model = "editc.newMarker.address">
+        </div>
+        <div>
+          <label for="Latitude">Latitude</label>
+          <input class="latitude form-control" id="latitude" type="text" ng-model = "editc.newMarker.latitude" required>
+        </div>
+        <div>
+          <label for="Longitude">Longitude</label>
+          <input class="longitude form-control" id="longitude" type="text" ng-model = "editc.newMarker.longitude" required>
+        </div>
+      </div>
+        <div class="col-sm-6 col-md-6 col-lg-6">
+          <h3> Add Some Personality </h3>
+          <div>
+            <label for="Image">Copy Image URL</label>
+            <input class="image form-control" id="image" type="url" ng-model = "editc.newMarker.image">
+          </div>
+          <div>
+            <label>Rate It!</label>
+            <select class="rating form-control" ng-model="editc.newMarker.rating">
+              <option>&#9733;</option>
+              <option>&#9733;&#9733;</option>
+              <option>&#9733;&#9733;&#9733;</option>
+              <option>&#9733;&#9733;&#9733;&#9733;</option>
+              <option>&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+            </select>
+          </div>
+          <div>
+            <label for="Signature">Add a Name for Attribution</label>
+            <input class="signature form-control" id="signature" value="anonymous" type="text" ng-model = "editc.newMarker.signature">
+          </div>
+        </div> <!-- end personality form row -->
+      </div> <!-- end form row -->
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <label for="Message">Message</label>
+          <input class="message form-control" id="message" type="text" ng-model = "editc.newMarker.message">
+        </div>
+      </div>
+      <div class="row" id="markersubmit">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <input type="submit" class="btn btn-success btn-block" value="Submit to Update Marker" ng-class="{disabled: markerForm.$invalid}" />
+        </div>
+      </div>
+  </form>
+</div>
