@@ -212,6 +212,20 @@
       $("input#latitude").val("").trigger("input");
       $("input#longitude").val("").trigger("input");
       $("input#message").val("").trigger("input");
+      $("input#signature").val("").trigger("input");
+    }
+
+    vm.formUsername = function() {
+      var ref = new Firebase('https://holidayhome.firebaseio.com');
+
+      if (ref.getAuth()) {
+        var email = ref.getAuth().password.email;
+        var endSlicePosition = email.indexOf("@");
+        var username = email.slice(0, endSlicePosition);
+        $("input#signature").val("Created by " + username).trigger("input");
+      } else {
+       $("input#signature").val("Created by Anonymous").trigger("input");
+      }
     }
 
     $scope.map = {

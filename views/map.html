@@ -124,9 +124,9 @@
               <option>&#9733;&#9733;&#9733;&#9733;&#9733;</option>
             </select>
           </div>
-          <div>
-            <label for="Signature">Add a Name for Attribution</label>
-            <input class="signature form-control" id="signature" value="anonymous" type="text" ng-model = "mc.newMarker.signature">
+          <div id="divsignature">
+            <input disabled class="signature form-control" id="signature" type="text" ng-model = "mc.newMarker.signature">
+            <input type="submit" class="btn btn-success" value="Add Username" ng-click="mc.formUsername()"/>
           </div>
         </div> <!-- end personality form row -->
       </div> <!-- end form row -->

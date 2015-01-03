@@ -62,3 +62,12 @@ body {
   margin: auto;
   margin-bottom: 20px;
 }
+
+#signature{
+  width: 250px;
+  display: inline;
+}
+
+#divsignature{
+  padding: 24px 30px;
+}
