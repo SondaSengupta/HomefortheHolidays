@@ -63,11 +63,11 @@ body {
   margin-bottom: 20px;
 }
 
-#signature, #editsignature{
+ #editsignature{
   width: 250px;
   display: inline;
 }
 
-#divsignature, #diveditsignature{
+ #diveditsignature{
   padding: 24px 30px;
 }
