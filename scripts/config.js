@@ -15,7 +15,7 @@
         controllerAs: "mc"
       })
       .when('/:id/edit', {
-        templateUrl: 'views/map.html',
+        templateUrl: 'views/edit.html',
         controller: 'EditController',
         controllerAs: 'editc'
       })

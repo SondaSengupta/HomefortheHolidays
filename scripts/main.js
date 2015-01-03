@@ -99,7 +99,7 @@
      .controller('EditController', function($http, $routeParams, $location){
       var vm = this;
       var id = $routeParams.id;
-      var url = "https://holidayhome.firebaseio.com/"+ id + ".json"
+      var url = 'https://holidayhome.firebaseio.com/' + id + '.json'
       $http.get(url)
       .success(function(data){
         vm.newMarker = data;
