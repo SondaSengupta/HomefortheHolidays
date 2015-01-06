@@ -123,10 +123,10 @@
           var email = ref.getAuth().password.email;
           var endSlicePosition = email.indexOf("@");
           var username = email.slice(0, endSlicePosition);
-          $("input#editsignature").val("Last edited by " + username).trigger("input");
+          $("input#editusername").val("Last edited by " + username).trigger("input");
 
         } else {
-         $("input#editsignature").val("Last edited by by Anonymous").trigger("input");
+         $("input#editusername").val("Last edited by by Anonymous").trigger("input");
         }
       }
 
@@ -154,6 +154,8 @@
 
     .controller("MapController", function($http, $scope, $location) {
       var vm = this;
+      vm.newMarker = {};
+
       $http.get("https://holidayhome.firebaseio.com/.json")
       .success(function(data) {
         vm.Marker = data;
@@ -246,22 +248,23 @@
       $("input#latitude").val("").trigger("input");
       $("input#longitude").val("").trigger("input");
       $("input#message").val("").trigger("input");
-      $("input#signature").val("").trigger("input");
     }
 
-    vm.formUsername = function() {
+
       var ref = new Firebase('https://holidayhome.firebaseio.com');
 
       if (ref.getAuth()) {
         var email = ref.getAuth().password.email;
         var endSlicePosition = email.indexOf("@");
         var username = email.slice(0, endSlicePosition);
-        $("input#signature").val("Created by " + username).trigger("input");
+        vm.newMarker.email = email;
+        vm.newMarker.username = username;
+        $("input#username").val("Created by " + username).trigger("input");
         $("input#email").val(email).trigger("input");
       } else {
-       $("input#signature").val("Created by Anonymous").trigger("input");
+       $("input#username").val("Created by Anonymous").trigger("input");
       }
-    }
+
 
     $scope.map = {
       control: {},
@@ -296,7 +299,11 @@
     $http.post(url, vm.newMarker)
       .success(function(data) {
         vm.Marker[data.name] = vm.newMarker;
-        vm.newMarker = null;
+        vm.newMarker = {};
+        vm.newMarker.email = email;
+        vm.newMarker.username = username;
+
+
         console.log("it works!");
       })
       .error(function(err) {

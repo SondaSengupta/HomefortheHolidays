@@ -27,8 +27,8 @@
   <ul class="list-group">
     <li class="list-group-item"> <strong class="glyphicon glyphicon-globe"></strong>   Located in coordinates ({{editc.newMarker.latitude}}, {{editc.newMarker.longitude}})</li>
     <li class="list-group-item"> <strong class="glyphicon glyphicon-pencil"></strong>   {{editc.newMarker.message}}</li>
-    <li class="list-group-item"> <strong class="glyphicon glyphicon-thumbs-up"></strong>   {{editc.newMarker.signature}} gave it {{editc.newMarker.rating}}</li>
-    <li class="list-group-item"> <strong class="glyphicon glyphicon-thumbs-up"></strong> {{editc.newMarker.editsignature}}</li>
+    <li class="list-group-item"> <strong class="glyphicon glyphicon-thumbs-up"></strong>   {{editc.newMarker.username}} gave it {{editc.newMarker.rating}}</li>
+    <li class="list-group-item"> <strong class="glyphicon glyphicon-thumbs-up"></strong> {{editc.newMarker.editusername}}</li>
 
   </ul>
 
@@ -72,11 +72,11 @@
             </select>
           </div>
           <div>
-            <label for="Signature">Created by</label>
-            <input disabled class="form-control" type="text" ng-model = "editc.newMarker.signature">
+            <label for="username">Created by</label>
+            <input disabled class="form-control" type="text" ng-model = "editc.newMarker.username">
           </div>
-          <div id="diveditsignature">
-            <input disabled class="editsignature form-control" id="editsignature" type="text" placeholder="click to add username" ng-model = "editc.newMarker.editsignature">
+          <div id="diveditusername">
+            <input disabled class="editusername form-control" id="editusername" type="text" placeholder="click to add username" ng-model = "editc.newMarker.editusername">
             <input type="submit" class="btn btn-success" value="Attribute Yourself" ng-click="editc.editUsername()"/>
           </div>
         </div> <!-- end personality form row -->
