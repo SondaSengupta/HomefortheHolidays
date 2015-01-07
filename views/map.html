@@ -51,7 +51,7 @@
   <ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control" options="options">
 
     <ui-gmap-marker ng-repeat="(markerId, list) in mc.Marker"
-            coords="list" idkey="markerId" icon="marker.icon2" options="marker.options">
+            coords="list" idkey="markerId" icon="marker.bulbicon" options="marker.options">
       <ui-gmap-window isIconVisibleOnClick="true">
         <div class="marker-infobox">
           <h5>{{list.address}}</h5>
