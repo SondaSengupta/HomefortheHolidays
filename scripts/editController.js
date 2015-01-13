@@ -13,7 +13,7 @@
       console.log(err);
     });
 
-    vm.addNewMarker = function(){
+    vm.updateMarker = function(){
       $http.put(url, vm.newMarker)
       .success(function(data){
         $location.path('/map')
