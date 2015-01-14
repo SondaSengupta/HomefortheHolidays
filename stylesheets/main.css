@@ -13,7 +13,7 @@
   height: 400px;
   }
 
-h1, h3, #light-brand {
+h1, h3, .light-brand {
   text-align: center;
   font-family: CityofLight, Impact;
 }
@@ -26,6 +26,14 @@ h1, h3, #light-brand {
 icon {
   height: 15px;
   width: 15px;
+}
+
+#memberjumbotron{
+  background-image: url(../img/slopedcityatnight.jpg);
+  color: lightgrey;
+  height: 600px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 td, th {
@@ -94,4 +102,8 @@ body {
 
  #diveditsignature{
   padding: 24px 30px;
+}
+
+#register{
+  margin-bottom: 50px;
 }
