@@ -135,16 +135,16 @@
 
   <h1>Spread the Cheer!</h1>
   <h2>Register to Share a House you Love!</h2>
-  <form name="loginForm" class= "form-inline" ng-submit="login.login()" novalidate>
-    <div class="form-group" ng-class="{'has-error': loginForm.$dirty && !login.email}">
+  <form name="loginForm" class= "form-inline" ng-submit="mc.register()" novalidate>
+    <div class="form-group" ng-class="{'has-error': loginForm.$dirty && !mc.email}">
       <label>Email Address</label>
-      <input class="form-control" type="email" placeholder="Step 1: Add an Email" ng-model="login.email" required>
+      <input class="form-control" type="email" placeholder="Step 1: Add an Email" ng-model="mc.email" required>
     </div>
-    <div class="form-group" ng-class="{'has-error': loginForm.$dirty && !login.password}">
+    <div class="form-group" ng-class="{'has-error': loginForm.$dirty && !mc.password}">
       <label>Password</label>
-      <input class="form-control" type="password" placeholder="Step 2: Add a Password"ng-model="login.password" required>
+      <input class="form-control" type="password" placeholder="Step 2: Add a Password"ng-model="mc.password" required>
     </div>
-    <div ng-click="login.register()" class="btn btn-default btn-danger" ng-class="{disabled: loginForm.$invalid}">Register</div>
+    <div ng-click="mc.register()" class="btn btn-default btn-danger" ng-class="{disabled: loginForm.$invalid}">Register</div>
   </form>
 
 </div>

@@ -34,40 +34,65 @@
      });
     })
 
-    .controller('LoginController', function($location, $scope){
+    .factory('authFactory', function($location){
+      var ref = new Firebase('https://holidayhome.firebaseio.com');
+
+      function login(useremail, userpassword, cb){
+        ref.authWithPassword({
+          email    : useremail,
+          password : userpassword
+        }, function(error, authData) {
+          if (error === null) {
+            console.log("User logged in successfully", authData);
+            cb();
+          } else {
+            console.log("Error logging in this user:", error);
+            alert(error.message);
+          }
+        });
+      }
+
+      function register(useremail, userpassword, cb){
+        ref.createUser({
+          email    : useremail,
+          password : userpassword
+        }, function(error, authData) {
+          if (error === null) {
+            console.log("User created successfully", authData);
+            alert("You have created an account successfully. You will be redirected to the member's map.")
+            cb();
+          } else {
+            console.log("Error creating user:", error);
+            alert(error.message);
+          }
+        });
+
+      }
+
+      return {
+        login: login,
+        register: register
+      }
+
+
+    })
+
+    .controller('LoginController', function($location, $scope, authFactory){
      var vm = this;
      var ref = new Firebase('https://holidayhome.firebaseio.com');
 
      vm.login = function(){
-       ref.authWithPassword({
-         email    : vm.email,
-         password : vm.password
-       }, function(error, authData) {
-         if (error === null) {
-           console.log("User logged in successfully", authData);
-           $location.path('/map');
-           $scope.$apply();
-         } else {
-           console.log("Error logging in this user:", error);
-           alert(error.message);
-         }
+       authFactory.login(vm.email, vm.password, function(){
+         $location.path('/map');
+         $scope.$apply();
        });
-     }
+     };
+
 
       vm.register = function(){
-       ref.createUser({
-         email    : vm.email,
-         password : vm.password
-       }, function(error, authData) {
-         if (error === null) {
-           console.log("User created successfully", authData);
-           alert("You have created an account successfully.")
-           vm.login();
-         } else {
-           console.log("Error creating user:", error);
-             alert(error.message);
-         }
-       });
+        authFactory.register(vm.email, vm.password, function(){
+          vm.login();
+        })
      }
 
       vm.forgotPassword = function(){
@@ -84,5 +109,5 @@
      };
 
     })
-    
+
 }());

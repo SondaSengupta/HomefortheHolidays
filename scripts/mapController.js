@@ -3,7 +3,7 @@
 
   angular.module("myApp")
 
-  .controller("MapController", function($http, $scope, $location, mapFactory) {
+  .controller("MapController", function($http, $scope, $location, mapFactory, authFactory) {
     var vm = this;
     vm.newMarker = {};
 
@@ -120,13 +120,25 @@
         vm.newMarker.email = email;
         vm.newMarker.username = username;
 
-
         console.log("it works!");
       })
       .error(function(err) {
         console.log(err);
       })
     }
+
+    vm.register = function(){
+      authFactory.register(vm.email, vm.password, function(){
+        vm.login();
+      })
+    }
+
+    vm.login = function(){
+      authFactory.login(vm.email, vm.password, function(){
+        $location.path('/map');
+        $scope.$apply();
+      });
+    };
 
   }); //end of controller
 
