@@ -28,18 +28,16 @@
 
     $scope.map = {
       control: {},
-      center: { latitude: 36, longitude: -87 },
-      zoom: 5
+      center: { latitude: 36.137778, longitude: -86.8235419 },
+      zoom: 10
     }
 
     $scope.options = {scrollwheel: false};
 
     $scope.marker = {
+      options: { animation: google.maps.Animation.DROP },
       bulbicon: 'http://icons.iconarchive.com/icons/gpritiranjan/simple-christmas/32/bulb-icon.png',
-      coords: {
-        latitude: 36,
-        longitude: -87
-      }
+      coords: { latitude: 36.137778, longitude: -86.8235419 }
     }
 
     $scope.markerList = vm.Marker;

@@ -10,7 +10,7 @@
 
 
 .angular-google-map-container {
-  height: 400px;
+  height: 600px;
   }
 
 h1, h3, .light-brand {
@@ -23,10 +23,7 @@ h1, h3, .light-brand {
   color: lightgrey;
   height: 600px;
 }
-icon {
-  height: 15px;
-  width: 15px;
-}
+
 
 #memberjumbotron{
   background-image: url(../img/slopedcityatnight.jpg);
@@ -47,8 +44,8 @@ body {
 
 
 .add-img{
-  height: 100px;
-  width: 100px;
+  height: 200px;
+  width: 200px;
   border-radius: 10%;
 }
 
