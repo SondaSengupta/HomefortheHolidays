@@ -3,7 +3,13 @@
 
   angular.module("myApp")
 
-  .controller("MapController", function($http, $scope, $location, mapFactory, authFactory) {
+  .controller("MapController", function($http, $scope, $location, $timeout, ngProgress, mapFactory, authFactory) {
+    ngProgress.start();
+    ngProgress.color('lightblue');
+    ngProgress.height('10px');
+    $timeout( function(){ ngProgress.complete() }, 2000);
+
+
     var vm = this;
     vm.newMarker = {};
 
