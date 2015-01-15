@@ -7,6 +7,7 @@
     ngProgress.start();
     ngProgress.color('lightblue');
     ngProgress.height('10px');
+    $timeout( function(){ ngProgress.set(25) }, 200);
     $timeout( function(){ ngProgress.complete() }, 2000);
 
 
