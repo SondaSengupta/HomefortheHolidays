@@ -4,7 +4,7 @@
 
   .factory("mapFactory", function($http, $location) {
     function getAllMarkers(cb) {
-      var url = "https://holidayhome.firebaseio.com/.json";
+      var url = "https://holidayhome.firebaseio.com/ChristmasMarkers.json";
 
       $http.get(url)
       .success(function(data) {
@@ -16,7 +16,7 @@
       })
     }
 
-    function getAddress(address, cb) {
+    function getAddress(address, cb) {  //cbelse
       var geocoder = new google.maps.Geocoder();
       console.log(address);
       geocoder.geocode( { "address": address }, function(results, status) {
@@ -24,10 +24,13 @@
           var addressCoordsLat = results[0].geometry.location.k,
           addressCoordsLng = results[0].geometry.location.D;
           console.log("Lat is " + addressCoordsLat + " and Long is " + addressCoordsLng);
+          // vm.addressStatus = status;
           cb(address, addressCoordsLat, addressCoordsLng);
 
         } else {
-          alert("Geocode was not successful for the following reason: " + status);
+          console.log("Geocode was not successful for the following reason: " + status);
+          // cbelse(status);
+          // addressStatus = status;
         }
       });
     }

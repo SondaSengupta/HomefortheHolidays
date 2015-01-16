@@ -1,6 +1,150 @@
 {
-  "a" : { "id": "1","latitude": "37", "longitude": "-83", "message": "Location1" },
-  "b" : { "id": "2", "latitude": "38", "longitude": "-84", "message": "Location2" },
-  "c" : { "id": "3", "latitude": "39", "longitude": "-85", "message": "Location3" },
-  "d" : { "id": "4", "latitude": "40", "longitude": "-86", "message": "Location4" }
+  "-Jff7ZE2XQgL1Rj_Fgo-": {
+    "address": "2045 Stanford Village Dr., Antioch, TN",
+    "email": "trisha@thing.com",
+    "image": "http://www.nashville.gov/DesktopModules/SimpleGallery/ImageHandler.ashx?width=600&height=398&HomeDirectory=%2FPortals%2F0%2FGallery%2FAlbum%2F267&fileName=image010.jpg&portalid=0&i=4671&q=1",
+    "latitude": "36.020898",
+    "longitude": "-86.687389",
+    "message": "2013 Antioch Winner of the Nashville Lights Competition",
+    "rating": "★★★★★",
+    "username": "trisha"
+  },
+  "-Jff86pQTNEQqbAFQMXk": {
+    "address": "212 Chapel Ave., Nashville, TN 37206",
+    "email": "trisha@thing.com",
+    "image": "http://www.nashville.gov/DesktopModules/SimpleGallery/ImageHandler.ashx?width=600&height=400&HomeDirectory=%2FPortals%2F0%2FGallery%2FAlbum%2F267&fileName=image007.jpg&portalid=0&i=4670&q=1",
+    "latitude": "36.185194",
+    "longitude": "-86.73638499999998",
+    "message": "Nashville Winner of the 2013 Nashville Lights Competition",
+    "username": "trisha"
+  },
+  "-Jff8yvoFtHdtAcwSIHP": {
+    "address": "207 Trotwood Dr., Brentwood, TN 37027",
+    "email": "trisha@thing.com",
+    "image": "http://www.nashville.gov/DesktopModules/SimpleGallery/ImageHandler.ashx?width=600&height=254&HomeDirectory=%2FPortals%2F0%2FGallery%2FAlbum%2F267&fileName=image004.jpg&portalid=0&i=4669&q=1",
+    "latitude": "36.03466",
+    "longitude": "-86.75024200000001",
+    "message": "Brentwood Winner of the 2013 Nashville Lights Competition",
+    "rating": "★★★★★",
+    "username": "trisha"
+  },
+  "-Jff9Nmz5HfzrFwkhThD": {
+    "address": "1302 Birdsall St., Old Hickory, TN 37138",
+    "email": "trisha@thing.com",
+    "image": "http://www.nashville.gov/DesktopModules/SimpleGallery/ImageHandler.ashx?width=320&height=480&HomeDirectory=%2FPortals%2F0%2FGallery%2FAlbum%2F267&fileName=image001.jpg&portalid=0&i=4668&q=1",
+    "latitude": "36.257178",
+    "longitude": "-86.64471900000001",
+    "message": "Old Hickory Winner of the 2013 Nashville Lights Competition",
+    "rating": "★★★★★",
+    "username": "trisha"
+  },
+  "-Jff9sXVFV2ophRjBCAb": {
+    "address": "7516 Rolling River Pkwy, Bellevue 37221",
+    "editusername": "Last edited by sonda",
+    "email": "trisha@thing.com",
+    "image": "http://www.nashville.gov/Portals/0/Gallery/Album/158/Region5Winner.jpg",
+    "latitude": "36.063463",
+    "longitude": "-86.96530789999997",
+    "message": "Bellevue Winner of the 2012 Nashville Lights Competition",
+    "rating": "★★★★★",
+    "username": "trisha"
+  },
+  "-JffB2D64tUr2mVV0c7H": {
+    "address": "5217 Regent Drive, Nashville 37220",
+    "email": "sonda@thing.com",
+    "image": "http://www.nashville.gov/Portals/0/Gallery/Album/158/Region4Winner.jpg",
+    "latitude": "36.057695",
+    "longitude": "-86.76599399999998",
+    "message": "Nashville Winner of the 2012 Nashville Lights Competition",
+    "rating": "★★★★",
+    "username": "sonda"
+  },
+  "-JffBizxjrciwk3JJZQF": {
+    "address": "6209 Paddington Way, Antioch 37013",
+    "email": "sonda@thing.com",
+    "image": "http://www.nashville.gov/Portals/0/Gallery/Album/158/Region3Winner.jpg",
+    "latitude": "36.071653",
+    "longitude": "-86.589291",
+    "message": "Antioch Winner of the 2012 Nashville Lights Competition",
+    "rating": "★★★★",
+    "username": "sonda"
+  },
+  "-JffBum1MHRufvI2HXZW": {
+    "address": "1800 Turner Street, Old Hickory 37138",
+    "email": "sonda@thing.com",
+    "image": "http://www.nashville.gov/Portals/0/Gallery/Album/158/Region2Winner.jpg",
+    "latitude": "36.252083",
+    "longitude": "-86.64342099999999",
+    "message": "Old Hickory Winner of the 2012 Nashville Lights Competition",
+    "rating": "★★★★",
+    "username": "sonda"
+  },
+  "-JffC8OdpHPpJPzVXqIq": {
+    "address": "702 Ronnie Rd, Madison, 37115",
+    "email": "sonda@thing.com",
+    "image": "http://www.nashville.gov/Portals/0/Gallery/Album/158/Region1Winner.jpg",
+    "latitude": "36.273503",
+    "longitude": "-86.72509589999999",
+    "message": "Madison Winner of the 2012 Nashville Lights Competition",
+    "rating": "★★★★",
+    "username": "sonda"
+  },
+  "-JffCXiW31r_PjoQGQyx": {
+    "address": "207 Trotwood Drive in Brentwood",
+    "email": "sonda@thing.com",
+    "image": "http://www.nashville.gov/Portals/0/Gallery/Album/126/Wright.jpg",
+    "latitude": "36.03466",
+    "longitude": "-86.75024200000001",
+    "message": "Winner of 2011 Nashville Lights Contest",
+    "rating": "★★★★",
+    "username": "sonda"
+  },
+  "-JffCm0iwGXrsQmV3kZv": {
+    "address": "1616 Sarah's Cove in Hermitage",
+    "email": "sonda@thing.com",
+    "image": "http://www.nashville.gov/Portals/0/Gallery/Album/126/Kay.jpg",
+    "latitude": "36.150169",
+    "longitude": "-86.574701",
+    "message": "2011 Nashville Lights Contest Winner, The Kay Family",
+    "rating": "★★★★",
+    "username": "sonda"
+  },
+  "-JffD5xHegSoLLDV6EfO": {
+    "address": "3513 Pinwheel Drive in Antioch, TN",
+    "email": "sonda@thing.com",
+    "image": "http://www.nashville.gov/Portals/0/Gallery/Album/126/Gill.jpg",
+    "latitude": "36.009868",
+    "longitude": "-86.624841",
+    "message": "2011 Nashville Lights Contest Winner",
+    "rating": "★★★★",
+    "username": "sonda"
+  },
+  "-JffDF6-w4QwFUcI4A3n": {
+    "address": "5133 Buena Vista Pike",
+    "email": "sonda@thing.com",
+    "image": "http://www.nashville.gov/Portals/0/Gallery/Album/126/Brickley.jpg",
+    "latitude": "36.236846",
+    "longitude": "-86.82797099999999",
+    "message": "2011 Nashville Lights Contest Winner",
+    "rating": "★★★★",
+    "username": "sonda"
+  },
+  "-JffDUPwXufpOBMCv8y5": {
+    "address": "2405 Bellevue Manor Drive",
+    "email": "sonda@thing.com",
+    "image": "http://www.nashville.gov/Portals/0/Gallery/Album/126/Richardson.jpg",
+    "latitude": "36.084126",
+    "longitude": "-86.95712200000003",
+    "message": "2011 Nashville Lights Winner",
+    "username": "sonda"
+  },
+  "-JffG0cstnN1ITS-X4NF": {
+    "address": "3518 Central Ave, Nashville TN",
+    "email": "sonda@thing.com",
+    "image": "http://www.nashville.gov/portals/0/SiteContent/pw/images/beautification/HolidayLights/2013/HolidayLights2013-3.jpg",
+    "latitude": "36.137778",
+    "longitude": "-86.82534199999998",
+    "message": "The Clements House 2013 Best Overall Nashville Lights Winner",
+    "rating": "★★★★★"
+  }
 }

@@ -4,6 +4,8 @@
   angular.module("myApp")
 
   .controller("MapController", function($http, $scope, $location, $timeout, ngProgress, mapFactory, authFactory) {
+
+// ----- WEBSITE PROGRESS BAR -----
     ngProgress.start();
     ngProgress.color('lightblue');
     ngProgress.height('10px');
@@ -11,6 +13,26 @@
     $timeout( function(){ ngProgress.complete() }, 2000);
 
 
+// ----- FIREBASE CHAT -----
+    var myDataRef = new Firebase('https://holidayhome.firebaseio.com/Chat');
+    $('#messageInput').keypress(function (e) {
+      if (e.keyCode == 13) {
+        var name = $('#nameInput').val();
+        var text = $('#messageInput').val();
+        myDataRef.push({name: name, text: text});
+        $('#messageInput').val('');
+      }
+    });
+    myDataRef.on('child_added', function(snapshot) {
+      var message = snapshot.val();
+      displayChatMessage(message.name, message.text);
+    });
+    function displayChatMessage(name, text) {
+      $('<div/>').text(text).prepend($('<strong/>').text(name+': ')).appendTo($('#messagesDiv'));
+      $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+    };
+
+// ----- FIREBASE MARKER UPLOAD AND RETRIEVAL-----
     var vm = this;
     vm.newMarker = {};
 
@@ -18,7 +40,7 @@
       vm.Marker = data;
     })
 
-    var ref = new Firebase('https://holidayhome.firebaseio.com');
+    var ref = new Firebase('https://holidayhome.firebaseio.com/ChristmasMarkers');
 
     if (ref.getAuth()) {
       var email = ref.getAuth().password.email;
@@ -32,7 +54,9 @@
       $("input#username").val("Created by Anonymous").trigger("input");
     }
 
+    $scope.markerList = vm.Marker;
 
+  // ----- ANGULAR GOOGLE MAPS -----
     $scope.map = {
       control: {},
       center: { latitude: 36.137778, longitude: -86.8235419 },
@@ -47,7 +71,7 @@
       coords: { latitude: 36.137778, longitude: -86.8235419 }
     }
 
-    $scope.markerList = vm.Marker;
+// ----- PAGE FUNCTIONALITY -----
 
     vm.getAddress = function() {
       var address = document.getElementById("address-marker").value;
@@ -117,7 +141,7 @@
     };
 
     vm.addNewMarker = function() {
-      var url = "https://holidayhome.firebaseio.com/.json";
+      var url = "https://holidayhome.firebaseio.com/ChristmasMarkers/.json";
       $http.post(url, vm.newMarker)
       .success(function(data) {
         vm.Marker[data.name] = vm.newMarker;
@@ -132,6 +156,7 @@
       })
     }
 
+// ----- LOGIN FUNCTIONS -----
     vm.register = function(){
       authFactory.register(vm.email, vm.password, function(){
         vm.login();

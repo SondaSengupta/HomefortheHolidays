@@ -4,7 +4,7 @@
   .controller('EditController', function($http, $routeParams, $location){
     var vm = this;
     var id = $routeParams.id;
-    var url = 'https://holidayhome.firebaseio.com/' + id + '.json'
+    var url = 'https://holidayhome.firebaseio.com/ChristmasMarkers/' + id + '.json'
     $http.get(url)
     .success(function(data){
       vm.newMarker = data;
@@ -38,12 +38,12 @@
     }
 
     vm.deleteEditMarker = function() {
-      var ref = new Firebase('https://holidayhome.firebaseio.com');
+      var ref = new Firebase('https://holidayhome.firebaseio.com/ChristmasMarkers');
       console.log(id);
       console.log(ref.getAuth().password.email);
       console.log(vm.newMarker.email);
       if(ref.getAuth().password.email === vm.newMarker.email){
-        var url = "https://holidayhome.firebaseio.com/" + id + ".json";
+        var url = "https://holidayhome.firebaseio.com/ChristmasMarkers/" + id + ".json";
         $http.delete(url)
         .success(function() {
           $location.path('/map')

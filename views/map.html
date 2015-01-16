@@ -14,8 +14,8 @@
         <a class="btn btn-danger navbar-btn navbar-right" href="/#/logout">Logout</a>
         <ul class="nav navbar-nav">
           <li><a href="/#/map" scroll-to="login-map">Top of Page</a></li>
-          <li><a href="/#/?scrollTo=login-map" scroll-to="login-map">View Map</a></li>
           <li><a href="/#/?scrollTo=marker-form" scroll-to="marker-form">Add a Marker</a></li>
+          <li><a href="/#/?scrollTo=chat-room" scroll-to="chatroom">Fireside Chat</a></li>
           <li><a href="/#/?scrollTo=marker-table" scroll-to="marker-table">Marker List</a></li>
         </ul>
       </div>
@@ -33,7 +33,7 @@
 
 
 <!--MAP CANVAS-->
-<div class="container text-center scrollpadding" id="login-map">
+<div class="container-fluid text-center scrollpadding" id="login-map">
 
   <h1> View Lights in your Area</h1>
 
@@ -152,29 +152,35 @@
 
 </div> <!-- end marker-form container -->
 
+<!-- CHAT MARKUP -->
+<div class="container well scrollpadding" id="chatroom">
+  <h1> Christmas Fireside Chat </h2>
+    <div class="row">
+      <div class="col-sm-3 col-md-3 col-lg-3">
+        <input class="form-control" type='text' id='nameInput' placeholder='Name'>
+      </div>
+      <div class="col-sm-9 col-md-9 col-lg-9">
+        <input class="form-control" type='text' id='messageInput' placeholder='Message'>
+      </div>
+    </div>
+    <hr>
+  <div id='messagesDiv'></div>
+</div>
 
 <div class="container scrollpadding text-center" id="marker-table">
   <h1> Marker List </h1>
   <table class="table">
-    <tr>
-      <th>Image Preview</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Message</th>
-      <th>Address</th>
-      <th>Rating</th>
-      <th>username</th>
-      <th>Edit</th>
+    <tr class="row">
+      <th class="col-sm-3 col-md-3 col-lg-3">Image Preview</th>
+      <th class="col-sm-3 col-md-3 col-lg-3">Address</th>
+      <th class="col-sm-3 col-md-3 col-lg-3">Message</th>
+      <th class="col-sm-3 col-md-3 col-lg-3">Edit</th>
     </tr>
-    <tr ng-repeat="(markerId, list) in mc.Marker">
-      <td><img class="add-img" ng-src="{{list.image}}"></td>
-      <td>{{list.latitude}}</td>
-      <td>{{list.longitude}}</td>
-      <td>{{list.message}}</td>
-      <td>{{list.address}}</td>
-      <td>{{list.rating}}</td>
-      <td>{{list.username}}</td>
-      <td> <a class="btn btn-primary" href="/#/{{markerId}}/edit">Edit</a></td>
+    <tr class="row" ng-repeat="(markerId, list) in mc.Marker">
+      <td class="col-sm-3 col-md-3 col-lg-3"><img class="add-img" ng-src="{{list.image}}"></td>
+      <td class="col-sm-3 col-md-3 col-lg-3">{{list.address}}</td>
+      <td class="col-sm-3 col-md-3 col-lg-3">{{list.message}}</td>
+      <td class="col-sm-3 col-md-3 col-lg-3"> <a class="btn btn-primary" href="/#/{{markerId}}/edit">Edit</a></td>
     </tr>
   </table>
 </div>
