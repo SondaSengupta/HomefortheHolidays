@@ -8,7 +8,7 @@ Home for the Holidays
 
 <p>As of this moment, the markers have been prepopulated with data from the annual Nashville Lights Competition winners.</p>
 
-<h3 id="features">Features</h3>
+<h3>Features</h3>
 <ul>
   <li>Ability to view homes on map by geolocation or entering a street address without needing to log in.</li>
   <li>You can preview a home’s picture, street address, and notes by clicking on its marker which brings up its infobox.</li>
@@ -16,3 +16,5 @@ Home for the Holidays
   <li>The member’s map has the ability to edit information directly from a marker’s infobox. Members can also view all homes in the database as a table.</li>
   <li>Log In/ Log out/ Forget Password is fully functional through Firebase.</li>
 </ul>
+
+<p>You can demo this app at <a href="https://holidayhome.firebaseapp.com/#/">here</a> served through Firebase.<p>
